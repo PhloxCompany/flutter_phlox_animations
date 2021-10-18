@@ -16,8 +16,8 @@ class PhloxAnimations extends StatelessWidget {
   final double? toY;
   final double? fromScale;
   final double? toScale;
-  final int? fromDegrees;
-  final int? toDegrees;
+  final double? fromDegrees;
+  final double? toDegrees;
 
   static const Duration _duration = Duration(seconds: 1);
   static const Duration _delay = Duration(seconds: 0);
@@ -40,7 +40,8 @@ class PhloxAnimations extends StatelessWidget {
     this.toDegrees = 0,
   }) : super(key: key);
 
-  const PhloxAnimations.opacity({Key? key,
+  const PhloxAnimations.opacity({
+    Key? key,
     required this.child,
     required this.fromOpacity,
     this.toOpacity,
@@ -57,7 +58,8 @@ class PhloxAnimations extends StatelessWidget {
     this.toDegrees = 0,
   }) : super(key: key);
 
-  const PhloxAnimations.move({Key? key,
+  const PhloxAnimations.move({
+    Key? key,
     required this.child,
     required this.fromX,
     required this.fromY,
@@ -74,7 +76,8 @@ class PhloxAnimations extends StatelessWidget {
     this.toDegrees = 0,
   }) : super(key: key);
 
-  const PhloxAnimations.rotate({Key? key,
+  const PhloxAnimations.rotate({
+    Key? key,
     required this.child,
     required this.fromDegrees,
     required this.toDegrees,
@@ -91,7 +94,8 @@ class PhloxAnimations extends StatelessWidget {
     this.toScale = 1.0,
   }) : super(key: key);
 
-  const PhloxAnimations.scale({Key? key,
+  const PhloxAnimations.scale({
+    Key? key,
     required this.child,
     required this.fromScale,
     required this.toScale,
@@ -144,29 +148,28 @@ class PhloxAnimations extends StatelessWidget {
           PhloxAnimeType.fade,
           tween: Tween(begin: fromOpacity, end: toOpacity));
 
-    // return repeat == true
-    //     ? LoopAnimation<TimelineValue<PhloxAnimeType>>(
-    //         tween: _tween,
-    //         duration: _tween.duration,
-    //         child: child,
-    //         builder: (context, child, animation) {
-    //           return Opacity(
-    //             opacity: animation.get(PhloxAnimeType.fade),
-    //             child: Transform.scale(
-    //               scale: animation.get(PhloxAnimeType.scale),
-    //               child: Transform.rotate(
-    //                 angle: animation.get(PhloxAnimeType.rotate),
-    //                 child: Transform.translate(
-    //                   offset: Offset(animation.get(PhloxAnimeType.moveX),
-    //                       animation.get(PhloxAnimeType.moveY)),
-    //                   child: child,
-    //                 ),
-    //               ),
-    //             ),
-    //           );
-    //         })
-    //     :
-    return PlayAnimation<TimelineValue<PhloxAnimeType>>(
+    return repeat == true
+        ? LoopAnimation<TimelineValue<PhloxAnimeType>>(
+            tween: _tween,
+            duration: _tween.duration,
+            child: child,
+            builder: (context, child, animation) {
+              return Opacity(
+                opacity: animation.get(PhloxAnimeType.fade),
+                child: Transform.scale(
+                  scale: animation.get(PhloxAnimeType.scale),
+                  child: Transform.rotate(
+                    angle: animation.get(PhloxAnimeType.rotate),
+                    child: Transform.translate(
+                      offset: Offset(animation.get(PhloxAnimeType.moveX),
+                          animation.get(PhloxAnimeType.moveY)),
+                      child: child,
+                    ),
+                  ),
+                ),
+              );
+            })
+        : PlayAnimation<TimelineValue<PhloxAnimeType>>(
             tween: _tween,
             duration: _tween.duration,
             child: child,
