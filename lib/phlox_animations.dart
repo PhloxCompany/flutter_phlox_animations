@@ -1,10 +1,13 @@
 library phlox_animations;
 
 import 'package:flutter/cupertino.dart';
+import 'package:phlox_animations/phlox_animations_enums.dart';
 import 'package:simple_animations/simple_animations.dart';
 
+
+
 class PhloxAnimations extends StatelessWidget {
-  final Duration duration;
+  final Duration? duration;
   final Duration delay;
   final Widget? child;
   final double? fromOpacity;
@@ -22,10 +25,10 @@ class PhloxAnimations extends StatelessWidget {
   static const Duration _duration = Duration(seconds: 1);
   static const Duration _delay = Duration(seconds: 0);
 
-  const PhloxAnimations({
+  PhloxAnimations({
     Key? key,
     required this.child,
-    this.duration = _duration,
+    required this.duration,
     this.delay = _delay,
     this.fromOpacity = 1.0,
     this.toOpacity = 1.0,
@@ -38,34 +41,78 @@ class PhloxAnimations extends StatelessWidget {
     this.toScale = 1.0,
     this.fromDegrees = 0,
     this.toDegrees = 0,
-  }) : super(key: key);
+  }) : super(key: key) {
+    assert(duration != null , "Error ==> duration is null");
+    assert(fromOpacity != null , "Error ==> fromOpacity is null");
+    assert(toOpacity != null , "Error ==> toOpacity is null");
+    assert(repeat != null , "Error ==> repeat is null");
+    assert(fromX != null , "Error ==> fromX is null");
+    assert(toX != null , "Error ==> toX is null");
+    assert(fromY != null , "Error ==> fromY is null");
+    assert(toY != null , "Error ==> toY is null");
+    assert(fromScale != null , "Error ==> fromScale is null");
+    assert(toScale != null , "Error ==> toScale is null");
+    assert(fromDegrees != null , "Error ==> fromDegrees is null");
+    assert(toDegrees != null , "Error ==> toDegrees is null");
+    assert(
+        fromOpacity! <= 1,
+        "fromOpacity must lower than 1 and higher than 0\n"
+        "Error ==> opacity : 0.0 < fromOpacity > 1.0\n"
+            "Fix ==> opacity : 0.0 > fromOpacity < 1.0");
+    assert(
+        toOpacity! >= 0,
+        "toOpacity must lower than 1.0 and higher than 0.0\n"
+        "Error opacity : 0.0 < toOpacity > 1.0");
+  }
 
-  const PhloxAnimations.opacity({
+  PhloxAnimations.opacity({
     Key? key,
     required this.child,
+    required this.duration,
     required this.fromOpacity,
-    this.toOpacity,
+    required this.toOpacity,
     this.fromX = 1.0,
     this.fromY = 1.0,
     this.toX = 1.0,
     this.toY = 1.0,
-    this.duration = _duration,
     this.delay = _delay,
     this.repeat = false,
     this.fromScale = 1.0,
     this.toScale = 1.0,
     this.fromDegrees = 0,
     this.toDegrees = 0,
-  }) : super(key: key);
+  }) : super(key: key) {
+    assert(duration != null , "Error ==> duration is null");
+    assert(fromOpacity != null , "Error ==> fromOpacity is null");
+    assert(toOpacity != null , "Error ==> toOpacity is null");
+    assert(repeat != null , "Error ==> repeat is null");
+    assert(fromX != null , "Error ==> fromX is null");
+    assert(toX != null , "Error ==> toX is null");
+    assert(fromY != null , "Error ==> fromY is null");
+    assert(toY != null , "Error ==> toY is null");
+    assert(fromScale != null , "Error ==> fromScale is null");
+    assert(toScale != null , "Error ==> toScale is null");
+    assert(fromDegrees != null , "Error ==> fromDegrees is null");
+    assert(toDegrees != null , "Error ==> toDegrees is null");
+    assert(
+    fromOpacity! < 1.0,
+    "fromOpacity must lower than 1 and higher than 0\n"
+        "Error ==> opacity : 0.0 < fromOpacity > 1.0\n"
+        "Fix ==> opacity : 0.0 > fromOpacity < 1.0");
+    assert(
+    toOpacity! > 0,
+    "toOpacity must lower than 1.0 and higher than 0.0\n"
+        "Error opacity : 0.0 < toOpacity > 1.0");
+  }
 
-  const PhloxAnimations.move({
+  PhloxAnimations.move({
     Key? key,
     required this.child,
+    required this.duration,
     required this.fromX,
     required this.fromY,
     required this.toX,
     required this.toY,
-    this.duration = _duration,
     this.delay = _delay,
     this.repeat = false,
     this.fromOpacity = 1.0,
@@ -74,14 +121,36 @@ class PhloxAnimations extends StatelessWidget {
     this.toScale = 1.0,
     this.fromDegrees = 0,
     this.toDegrees = 0,
-  }) : super(key: key);
+  }) : super(key: key) {
+    assert(duration != null , "Error ==> duration is null");
+    assert(fromOpacity != null , "Error ==> fromOpacity is null");
+    assert(toOpacity != null , "Error ==> toOpacity is null");
+    assert(repeat != null , "Error ==> repeat is null");
+    assert(fromX != null , "Error ==> fromX is null");
+    assert(toX != null , "Error ==> toX is null");
+    assert(fromY != null , "Error ==> fromY is null");
+    assert(toY != null , "Error ==> toY is null");
+    assert(fromScale != null , "Error ==> fromScale is null");
+    assert(toScale != null , "Error ==> toScale is null");
+    assert(fromDegrees != null , "Error ==> fromDegrees is null");
+    assert(toDegrees != null , "Error ==> toDegrees is null");
+    assert(
+    fromOpacity! < 1,
+    "fromOpacity must lower than 1 and higher than 0\n"
+        "Error ==> opacity : 0.0 < fromOpacity > 1.0\n"
+        "Fix ==> opacity : 0.0 > fromOpacity < 1.0");
+    assert(
+    toOpacity! > 0,
+    "toOpacity must lower than 1.0 and higher than 0.0\n"
+        "Error opacity : 0.0 < toOpacity > 1.0");
+  }
 
-  const PhloxAnimations.rotate({
+  PhloxAnimations.rotate({
     Key? key,
     required this.child,
+    required this.duration,
     required this.fromDegrees,
     required this.toDegrees,
-    this.duration = _duration,
     this.delay = _delay,
     this.repeat = false,
     this.fromX = 0.0,
@@ -92,14 +161,36 @@ class PhloxAnimations extends StatelessWidget {
     this.toOpacity = 1.0,
     this.fromScale = 1.0,
     this.toScale = 1.0,
-  }) : super(key: key);
+  }) : super(key: key) {
+    assert(duration != null , "Error ==> duration is null");
+    assert(fromOpacity != null , "Error ==> fromOpacity is null");
+    assert(toOpacity != null , "Error ==> toOpacity is null");
+    assert(repeat != null , "Error ==> repeat is null");
+    assert(fromX != null , "Error ==> fromX is null");
+    assert(toX != null , "Error ==> toX is null");
+    assert(fromY != null , "Error ==> fromY is null");
+    assert(toY != null , "Error ==> toY is null");
+    assert(fromScale != null , "Error ==> fromScale is null");
+    assert(toScale != null , "Error ==> toScale is null");
+    assert(fromDegrees != null , "Error ==> fromDegrees is null");
+    assert(toDegrees != null , "Error ==> toDegrees is null");
+    assert(
+    fromOpacity! < 1,
+    "fromOpacity must lower than 1 and higher than 0\n"
+        "Error ==> opacity : 0.0 < fromOpacity > 1.0\n"
+        "Fix ==> opacity : 0.0 > fromOpacity < 1.0");
+    assert(
+    toOpacity! > 0,
+    "toOpacity must lower than 1.0 and higher than 0.0\n"
+        "Error opacity : 0.0 < toOpacity > 1.0");
+  }
 
-  const PhloxAnimations.scale({
+  PhloxAnimations.scale({
     Key? key,
     required this.child,
+    required this.duration,
     required this.fromScale,
     required this.toScale,
-    this.duration = _duration,
     this.delay = _delay,
     this.repeat = false,
     this.fromDegrees = 0,
@@ -110,26 +201,51 @@ class PhloxAnimations extends StatelessWidget {
     this.toY = 0.0,
     this.fromOpacity = 1.0,
     this.toOpacity = 1.0,
-  }) : super(key: key);
-
-  static Widget custom({
-    required Widget child,
-    required double? fromScale,
-    required double? toScale,
-    Duration duration = _duration,
-    Duration delay = _delay,
-    bool? repeat = false,
-    int? fromDegrees,
-    int? toDegrees,
-    double? fromX,
-    double? fromY,
-    double? toX,
-    double? toY,
-    double? fromOpacity,
-    double? toOpacity,
-  }) {
-    return _TranslatePlayAnimation();
+  }) : super(key: key) {
+    assert(duration != null , "Error ==> duration is null");
+    assert(fromOpacity != null , "Error ==> fromOpacity is null");
+    assert(toOpacity != null , "Error ==> toOpacity is null");
+    assert(repeat != null , "Error ==> repeat is null");
+    assert(fromX != null , "Error ==> fromX is null");
+    assert(toX != null , "Error ==> toX is null");
+    assert(fromY != null , "Error ==> fromY is null");
+    assert(toY != null , "Error ==> toY is null");
+    assert(fromScale != null , "Error ==> fromScale is null");
+    assert(toScale != null , "Error ==> toScale is null");
+    assert(fromDegrees != null , "Error ==> fromDegrees is null");
+    assert(toDegrees != null , "Error ==> toDegrees is null");
+    assert(
+    fromOpacity! < 1,
+    "fromOpacity must lower than 1 and higher than 0\n"
+        "Error ==> opacity : 0.0 < fromOpacity > 1.0\n"
+        "Fix ==> opacity : 0.0 > fromOpacity < 1.0");
+    assert(
+    toOpacity! > 0,
+    "toOpacity must lower than 1.0 and higher than 0.0\n"
+        "Error opacity : 0.0 < toOpacity > 1.0");
   }
+
+
+  /// in next update
+  //
+  // static Widget custom({
+  //   required Widget child,
+  //   required double? fromScale,
+  //   required double? toScale,
+  //   Duration duration = _duration,
+  //   Duration delay = _delay,
+  //   bool? repeat = false,
+  //   int? fromDegrees,
+  //   int? toDegrees,
+  //   double? fromX,
+  //   double? fromY,
+  //   double? toX,
+  //   double? toY,
+  //   double? fromOpacity,
+  //   double? toOpacity,
+  // }) {
+  //   return Text("");
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -156,10 +272,11 @@ class PhloxAnimations extends StatelessWidget {
             builder: (context, child, animation) {
               return Opacity(
                 opacity: animation.get(PhloxAnimeType.fade),
-                child: Transform.scale(
-                  scale: animation.get(PhloxAnimeType.scale),
-                  child: Transform.rotate(
-                    angle: animation.get(PhloxAnimeType.rotate),
+                child: RotationTransition(
+                  turns: AlwaysStoppedAnimation(
+                      animation.get(PhloxAnimeType.rotate) / 360),
+                  child: Transform.scale(
+                    scale: animation.get(PhloxAnimeType.scale),
                     child: Transform.translate(
                       offset: Offset(animation.get(PhloxAnimeType.moveX),
                           animation.get(PhloxAnimeType.moveY)),
@@ -174,13 +291,15 @@ class PhloxAnimations extends StatelessWidget {
             duration: _tween.duration,
             child: child,
             delay: delay,
+
             builder: (context, child, animation) {
               return Opacity(
                 opacity: animation.get(PhloxAnimeType.fade),
-                child: Transform.scale(
-                  scale: animation.get(PhloxAnimeType.scale),
-                  child: Transform.rotate(
-                    angle: animation.get(PhloxAnimeType.rotate),
+                child: RotationTransition(
+                  turns: AlwaysStoppedAnimation(
+                      animation.get(PhloxAnimeType.rotate) / 360),
+                  child: Transform.scale(
+                    scale: animation.get(PhloxAnimeType.scale),
                     child: Transform.translate(
                       offset: Offset(animation.get(PhloxAnimeType.moveX),
                           animation.get(PhloxAnimeType.moveY)),
@@ -190,41 +309,5 @@ class PhloxAnimations extends StatelessWidget {
                 ),
               );
             });
-  }
-}
-
-enum PhloxAnimeType {
-  fade,
-  moveX,
-  moveY,
-  rotate,
-  scale,
-  custom,
-}
-
-class _FadePlayAnimation extends StatelessWidget {
-  const _FadePlayAnimation({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}
-
-class _TranslatePlayAnimation extends StatelessWidget {
-  const _TranslatePlayAnimation({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}
-
-class _RotatePlayAnimation extends StatelessWidget {
-  const _RotatePlayAnimation({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
   }
 }
