@@ -3,8 +3,8 @@
 [![flutter animation pub get package version](https://img.shields.io/badge/pub-0.0.2-red)](https://pub.dev/packages/phlox_animations)
 [![flutter animation awesome Flutter](https://img.shields.io/badge/awesome-Flutter-blue)](https://pub.dev/packages/phlox_animations)
 
-**Phlox Animations** is a simple package to create beautiful custom animations . - Animate **
-multiple properties** at once
+**Phlox Animations** is a simple package to create beautiful custom animations . 
+- Animate **multiple properties** at once
 
 ## Getting started
 
