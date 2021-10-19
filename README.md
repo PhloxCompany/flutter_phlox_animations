@@ -1,39 +1,82 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# 📱 Phlox Animations plugin
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
+[![flutter animation pub get package version](https://img.shields.io/badge/pub-0.0.2-red)](https://pub.dev/packages/phlox_animations)
+[![flutter animation awesome Flutter](https://img.shields.io/badge/awesome-Flutter-blue)](https://pub.dev/packages/phlox_animations)
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
-
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+**Phlox Animations** is a simple package to create beautiful custom animations . - Animate **
+multiple properties** at once
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+- add package
 
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
-
-```dart
-const like = 'sample';
+```yaml
+dependencies:
+  phlox_animations: ^0.0.2
 ```
 
-## Additional information
+```commandline
+flutter pub get
+flutter pub upgrade
+```
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+<!-- #toc -->
+
+## Table of Contents
+
+[**Overview**](#overview)
+
+- [PhloxAnimations](#PhloxAnimations)
+- [PhloxAnimations.move()](#phlox-animations-move)
+- [PhloxAnimations.opacity()](#phlox-animations-opacity)
+- [PhloxAnimations.rotate()](#phlox-animations-rotate)
+- [PhloxAnimations.scale()](#phlox-animations-scale)
+
+<!-- // end of #toc -->
+
+## Overview
+
+PhloxAnimations consists of several's feature.
+
+### PhloxAnimations
+
+example :
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:simple_animations/simple_animations.dart';
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    // page width 
+    var pageWidth = MediaQuery
+        .of(context)
+        .size
+        .width;
+    return PhloxAnimations(
+      child: Container(
+        color: Colors.lightGreen, // use animated value
+        width: 100,
+        height: 100,
+        child: Text("hi"),
+      ),
+      duration: const Duration(seconds: 1),
+      delay: Duration.zero,
+      fromX: 0, // optional
+      toX: 0, // optional
+      toY: 0, // optional
+      fromY: 0, // optional
+      fromDegrees: 0, // optional
+      toDegrees: 0, // optional
+      fromOpacity: 0, // optional
+      toOpacity: 0, // optional
+      fromScale: 0, // optional
+      toScale: 0, // optional
+      repeat: false, // optional
+    );
+  }
+}
+```

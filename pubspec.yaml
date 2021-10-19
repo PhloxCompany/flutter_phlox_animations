@@ -1,6 +1,6 @@
 name: phlox_animations
-description: A new Flutter project.
-version: 0.0.1
+description: Flutter
+version: 0.0.2
 homepage: https://github.com/phloxCompany/flutter_phlox_animations.git
 
 environment:
