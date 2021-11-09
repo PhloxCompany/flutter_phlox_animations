@@ -6,7 +6,6 @@ class PhloxAnimationsExample04 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     var pageWidth = MediaQuery.of(context).size.width;
 
     return Column(
@@ -33,8 +32,10 @@ class PhloxAnimationsExample04 extends StatelessWidget {
             ),
           ],
         ),
-
-        SizedBox(height: 40, width: pageWidth,)
+        SizedBox(
+          height: 40,
+          width: pageWidth,
+        )
       ],
     );
   }

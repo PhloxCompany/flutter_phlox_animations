@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:phlox_animations/phlox_animations.dart';
 
-
 class PhloxAnimationsExample05 extends StatelessWidget {
   const PhloxAnimationsExample05({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
     var pageWidth = MediaQuery.of(context).size.width;
 
     return PhloxAnimations(
@@ -25,6 +23,3 @@ class PhloxAnimationsExample05 extends StatelessWidget {
     );
   }
 }
-
-
-

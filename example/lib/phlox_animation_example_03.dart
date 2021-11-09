@@ -2,17 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:phlox_animations/phlox_animations.dart';
 
 class PhloxAnimationsExample03 extends StatelessWidget {
+  /// constructor
   const PhloxAnimationsExample03({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
     var pageWidth = MediaQuery.of(context).size.width;
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-
         // animation 1
         PhloxAnimations(
           child: Container(
@@ -28,7 +27,6 @@ class PhloxAnimationsExample03 extends StatelessWidget {
           fromX: 0,
           toX: 130,
         ),
-
       ],
     );
   }

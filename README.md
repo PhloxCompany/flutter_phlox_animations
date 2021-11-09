@@ -27,10 +27,10 @@ flutter pub upgrade
 [**Overview**](#overview)
 
 - [PhloxAnimations](#PhloxAnimations)
-- [PhloxAnimations.move()](#phlox-animations-move)
-- [PhloxAnimations.opacity()](#phlox-animations-opacity)
-- [PhloxAnimations.rotate()](#phlox-animations-rotate)
-- [PhloxAnimations.scale()](#phlox-animations-scale)
+- [PhloxAnimations.move()]()
+- [PhloxAnimations.opacity()]()
+- [PhloxAnimations.rotate()]()
+- [PhloxAnimations.scale()]()
 
 <!-- // end of #toc -->
 
@@ -41,10 +41,25 @@ PhloxAnimations consists of several's feature.
 ### PhloxAnimations
 
 example :
+![Flutter animations](./readme_files/phlox_animation_01.gif)
 
+```
+    PhloxAnimations(
+      fromOpacity: 0,
+      fromY: -60,
+      child: Container(
+        padding: const EdgeInsets.all(20),
+        color: Colors.orangeAccent,
+        child: const Text("Hello World"),
+      ),
+      duration: const Duration(seconds: 1)),
+    )
+```
+
+
+another example full code :
 ```dart
 import 'package:flutter/material.dart';
-import 'package:simple_animations/simple_animations.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -58,7 +73,7 @@ class MyApp extends StatelessWidget {
         .width;
     return PhloxAnimations(
       child: Container(
-        color: Colors.lightGreen, // use animated value
+        color: Colors.lightGreen,
         width: 100,
         height: 100,
         child: Text("hi"),

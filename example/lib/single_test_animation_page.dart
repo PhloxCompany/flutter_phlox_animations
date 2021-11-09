@@ -1,27 +1,24 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:phlox_animations/phlox_animations.dart';
 
 class SingleTestAnimationPage extends StatelessWidget {
-  final Widget animationWidget ;
-  final String animationName ;
-  const SingleTestAnimationPage({Key? key, required this.animationName, required this.animationWidget}) : super(key: key);
+  const SingleTestAnimationPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-
-          Text(animationName),
-          const SizedBox(height: 20,),
-
-          Center(
-            child: animationWidget,
-          ),
-        ],
-      ),
-    );
+        appBar: AppBar(),
+        body: Center(
+          child: PhloxAnimations(
+              fromOpacity: 0,
+              fromY: -60,
+              child: Container(
+                padding: const EdgeInsets.all(20),
+                color: Colors.orangeAccent,
+                child: const Text("Hello World"),
+              ),
+              duration: const Duration(seconds: 1)),
+        ));
   }
 }
