@@ -42,8 +42,7 @@ PhloxAnimations consists of several's feature.
 
 example :
 <br><br>
-<img src="./readme_files/phlox_animation_01.gif" width="200" alt="Flutter animations"/>
-
+<img src="./readme_files/phlox_animation_01.gif" width="400" alt="Flutter animations"/>
 
 ```dart
 import 'package:flutter/cupertino.dart';
