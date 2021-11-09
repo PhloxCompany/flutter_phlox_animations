@@ -42,7 +42,7 @@ PhloxAnimations consists of several's feature.
 
 example :
 <br><br>
-<img src="./readme_files/phlox_animation_01.gif" width="40" height="40" alt="Flutter animations"/>
+<img src="./readme_files/phlox_animation_01.gif" width="200" alt="Flutter animations"/>
 
 
 ```dart
