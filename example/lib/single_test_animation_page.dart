@@ -12,12 +12,18 @@ class SingleTestAnimationPage extends StatelessWidget {
           child: PhloxAnimations(
               fromOpacity: 0,
               fromY: -60,
+              onStart: () {
+                print("start");
+              },
+              onProgress: (progress) {
+                print(progress);
+              },
               child: Container(
                 padding: const EdgeInsets.all(20),
                 color: Colors.orangeAccent,
                 child: const Text("Hello World"),
               ),
-              duration: const Duration(seconds: 1)),
+              duration: const Duration(seconds: 4)),
         ));
   }
 }

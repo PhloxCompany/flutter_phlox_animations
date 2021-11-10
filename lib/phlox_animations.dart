@@ -5,15 +5,23 @@ import 'package:simple_animations/simple_animations.dart';
 
 /// [_PhloxAnimeType] for change 5 mode of
 /// animation list
-enum _PhloxAnimeType {
-  fade,
-  moveX,
-  moveY,
-  rotate,
-  scale,
-}
+/// [_PhloxAnimeType.fade] for widget opacity
+/// [_PhloxAnimeType.moveX] for widget move
+/// [_PhloxAnimeType.moveY] for widget move
+/// [_PhloxAnimeType.rotate] for widget rotate
+/// [_PhloxAnimeType.scale] for widget scale
+/// [_PhloxAnimeType.progress] for widget progress
+enum _PhloxAnimeType { fade, moveX, moveY, rotate, scale, progress }
 
-/// [PhloxAnimations] is very useful and simple animation
+/// [OnStart] is animation start function
+typedef OnStart = Function();
+
+/// [OnProgress] is animation end function
+typedef OnProgress = Function(double progress);
+
+/// [OnComplete] is animation progress function
+typedef OnComplete = Function();
+
 class PhloxAnimations extends StatelessWidget {
   /// [duration] is time from start to end of animation
   /// [delay] is time to delay start animation
@@ -29,6 +37,9 @@ class PhloxAnimations extends StatelessWidget {
   /// [toScale] for scale widget from widgets current scale
   /// [fromDegrees] for rotate widget from widgets current angle
   /// [toDegrees] for rotate widget to widgets current angle
+  /// [onStart] is listener start animation
+  /// [onComplete] is listener end animation
+  /// [onProgress] is listener progress animation
 
   final Duration? duration;
   final Duration? delay;
@@ -43,7 +54,12 @@ class PhloxAnimations extends StatelessWidget {
   final double? toScale;
   final double? fromDegrees;
   final double? toDegrees;
+  final OnStart? onStart;
+  final OnComplete? onComplete;
+  final OnProgress? onProgress;
 
+  /// [PhloxAnimations] is very useful and simple animation
+  /// this animation required [duration] and [child]
   PhloxAnimations({
     Key? key,
     required this.child,
@@ -59,6 +75,9 @@ class PhloxAnimations extends StatelessWidget {
     this.toScale = 1.0,
     this.fromDegrees = 0,
     this.toDegrees = 0,
+    this.onStart,
+    this.onComplete,
+    this.onProgress,
   }) : super(key: key) {
     assert(duration != null, "Error ==> duration is null");
     assert(fromOpacity != null, "Error ==> fromOpacity is null");
@@ -82,6 +101,9 @@ class PhloxAnimations extends StatelessWidget {
         "Error opacity : 0.0 < toOpacity > 1.0");
   }
 
+  /// [PhloxAnimations.opacity] is customized for opacity animation
+  /// and you can add extra animation property to your widget
+  /// this animation required [duration] and [child]
   PhloxAnimations.opacity({
     Key? key,
     required this.child,
@@ -97,6 +119,9 @@ class PhloxAnimations extends StatelessWidget {
     this.toScale = 1.0,
     this.fromDegrees = 0,
     this.toDegrees = 0,
+    this.onStart,
+    this.onComplete,
+    this.onProgress,
   }) : super(key: key) {
     assert(duration != null, "Error ==> duration is null");
     assert(fromOpacity != null, "Error ==> fromOpacity is null");
@@ -120,6 +145,9 @@ class PhloxAnimations extends StatelessWidget {
         "Error opacity : 0.0 < toOpacity > 1.0");
   }
 
+  /// [PhloxAnimations.move] is customized for move animation
+  /// and you can add extra animation property to your widget
+  /// this animation required [duration] and [child]
   PhloxAnimations.move({
     Key? key,
     required this.child,
@@ -135,6 +163,9 @@ class PhloxAnimations extends StatelessWidget {
     this.toScale = 1.0,
     this.fromDegrees = 0,
     this.toDegrees = 0,
+    this.onStart,
+    this.onComplete,
+    this.onProgress,
   }) : super(key: key) {
     assert(duration != null, "Error ==> duration is null");
     assert(fromOpacity != null, "Error ==> fromOpacity is null");
@@ -158,6 +189,9 @@ class PhloxAnimations extends StatelessWidget {
         "Error opacity : 0.0 < toOpacity > 1.0");
   }
 
+  /// [PhloxAnimations.rotate] is customized for rotate animation
+  /// and you can add extra animation property to your widget
+  /// this animation required [duration] and [child]
   PhloxAnimations.rotate({
     Key? key,
     required this.child,
@@ -173,6 +207,9 @@ class PhloxAnimations extends StatelessWidget {
     this.toOpacity = 1.0,
     this.fromScale = 1.0,
     this.toScale = 1.0,
+    this.onStart,
+    this.onComplete,
+    this.onProgress,
   }) : super(key: key) {
     assert(duration != null, "Error ==> duration is null");
     assert(fromOpacity != null, "Error ==> fromOpacity is null");
@@ -196,6 +233,9 @@ class PhloxAnimations extends StatelessWidget {
         "Error opacity : 0.0 < toOpacity > 1.0");
   }
 
+  /// [PhloxAnimations.scale] is customized for scale animation
+  /// and you can add extra animation property to your widget
+  /// this animation required [duration] and [child]
   PhloxAnimations.scale({
     Key? key,
     required this.child,
@@ -211,6 +251,9 @@ class PhloxAnimations extends StatelessWidget {
     this.toY = 0.0,
     this.fromOpacity = 1.0,
     this.toOpacity = 1.0,
+    this.onStart,
+    this.onComplete,
+    this.onProgress,
   }) : super(key: key) {
     assert(duration != null, "Error ==> duration is null");
     assert(fromOpacity != null, "Error ==> fromOpacity is null");
@@ -234,30 +277,12 @@ class PhloxAnimations extends StatelessWidget {
         "Error opacity : 0.0 < toOpacity > 1.0");
   }
 
-  /// in next update
-  //
-  // static Widget custom({
-  //   required Widget child,
-  //   required double? fromScale,
-  //   required double? toScale,
-  //   Duration duration = _duration,
-  //   Duration delay = _delay,
-  //   bool? repeat = false,
-  //   int? fromDegrees,
-  //   int? toDegrees,
-  //   double? fromX,
-  //   double? fromY,
-  //   double? toX,
-  //   double? toY,
-  //   double? fromOpacity,
-  //   double? toOpacity,
-  // }) {
-  //   return Text("");
-  // }
-
   @override
   Widget build(BuildContext context) {
+    /// [_tween] is animation listener
     final _tween = TimelineTween<_PhloxAnimeType>()
+      ..addScene(begin: const Duration(milliseconds: 0), end: duration)
+          .animate(_PhloxAnimeType.progress, tween: Tween(begin: 0, end: 1))
       ..addScene(begin: const Duration(milliseconds: 0), end: duration)
           .animate(_PhloxAnimeType.moveX, tween: Tween(begin: fromX, end: toX))
       ..addScene(begin: const Duration(milliseconds: 0), end: duration)
@@ -277,7 +302,11 @@ class PhloxAnimations extends StatelessWidget {
         duration: _tween.duration,
         child: child,
         delay: delay ?? const Duration(seconds: 0),
+        onStart: () => onStart?.call(),
+        onComplete: () => onComplete?.call(),
         builder: (context, child, animation) {
+          onProgress?.call(double.parse(
+              animation.get(_PhloxAnimeType.progress).toStringAsFixed(2)));
           return Opacity(
             opacity: animation.get(_PhloxAnimeType.fade),
             child: RotationTransition(

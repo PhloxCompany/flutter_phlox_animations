@@ -1,9 +1,10 @@
 # 📱 Phlox Animations plugin
 
-[![flutter animation pub get package version](https://img.shields.io/badge/pub-1.0.0-red)](https://pub.dev/packages/phlox_animations)
-[![flutter animation awesome Flutter](https://img.shields.io/badge/awesome-Flutter-blue)](https://pub.dev/packages/phlox_animations)
+[![flutter animation pub get package version](https://img.shields.io/badge/pub-1.0.1-red)](https://pub.dev/packages/phlox_animations)
+[![flutter animation phlox company](https://img.shields.io/badge/Flutter-PhloxCompany-blue)](https://pub.dev/packages/phlox_animations)
 
-**Phlox Animations** is a simple package to create beautiful custom animations . 
+**Phlox Animations** is a simple package to create beautiful custom animations .
+
 - Animate **multiple properties** at once
 
 ## Getting started
@@ -12,7 +13,7 @@
 
 ```yaml
 dependencies:
-  phlox_animations: ^1.0.0
+  phlox_animations: ^1.0.1
 ```
 
 ```commandline
@@ -71,8 +72,8 @@ class PhloxAnimationsTest extends StatelessWidget {
 }
 ```
 
-
 another example full code :
+
 ```dart
 import 'package:flutter/material.dart';
 
@@ -95,16 +96,32 @@ class MyApp extends StatelessWidget {
       ),
       duration: const Duration(seconds: 1),
       delay: Duration.zero,
-      fromX: 0, // optional
-      toX: 0, // optional
-      toY: 0, // optional
-      fromY: 0, // optional
-      fromDegrees: 0, // optional
-      toDegrees: 0, // optional
-      fromOpacity: 0, // optional
-      toOpacity: 0, // optional
-      fromScale: 0, // optional
-      toScale: 0, // optional
+
+      onStart : (){},
+      // optional
+      onComplete : (){},
+      // optional
+      onProgress : (progress){}, // progress is double 0 to 1
+      fromX: 0,
+      // optional
+      toX: 0,
+      // optional
+      toY: 0,
+      // optional
+      fromY: 0,
+      // optional
+      fromDegrees: 0,
+      // optional
+      toDegrees: 0,
+      // optional
+      fromOpacity: 0,
+      // optional
+      toOpacity: 0,
+      // optional
+      fromScale: 0,
+      // optional
+      toScale: 0,
+      // optional
       repeat: false, // optional
     );
   }
