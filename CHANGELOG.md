@@ -5,3 +5,7 @@
 ## 0.0.2
 
 * Change readme.md 
+
+## 1.0.0
+
+* add gif file and introduce variables

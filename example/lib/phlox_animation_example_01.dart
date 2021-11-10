@@ -7,7 +7,6 @@ class PhloxAnimationsExample01 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [

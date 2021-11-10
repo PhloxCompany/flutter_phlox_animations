@@ -12,7 +12,7 @@
 
 ```yaml
 dependencies:
-  phlox_animations: ^0.0.2
+  phlox_animations: ^1.0.0
 ```
 
 ```commandline

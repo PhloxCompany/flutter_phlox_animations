@@ -11,9 +11,7 @@ enum _PhloxAnimeType {
   scale,
 }
 
-
 class PhloxAnimations extends StatelessWidget {
-
   /// [duration] is time from start to end of animation
   /// [delay] is time to delay start animation
   /// [child] is required and you can add your widget into

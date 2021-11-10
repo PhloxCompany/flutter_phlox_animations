@@ -26,10 +26,9 @@ class AnimationsListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     /// hide navigation bar
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [SystemUiOverlay.top]);
-
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+        overlays: [SystemUiOverlay.top]);
 
     return Scaffold(
       appBar: AppBar(
@@ -58,7 +57,6 @@ class AnimationsListPage extends StatelessWidget {
             // 5 ______________
             SimpleDivider(text: "5"),
             PhloxAnimationsExample05(),
-
           ],
         ),
       ),
