@@ -42,7 +42,7 @@ PhloxAnimations consists of several's feature.
 
 example :
 <br><br>
-<img src="https://github.com/phloxCompany/flutter_phlox_animations/readme_files/phlox_animation_01.gif" width="400" alt="Flutter animations"/>
+<img src="https://github.com/phloxCompany/flutter_phlox_animations/blob/master/readme_files/phlox_animation_01.gif?raw=true" width="400" alt="Flutter animations"/>
 
 ```dart
 import 'package:flutter/cupertino.dart';
