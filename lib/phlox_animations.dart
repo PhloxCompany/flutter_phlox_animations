@@ -3,6 +3,8 @@ library phlox_animations;
 import 'package:flutter/cupertino.dart';
 import 'package:simple_animations/simple_animations.dart';
 
+/// [_PhloxAnimeType] for change 5 mode of
+/// animation list
 enum _PhloxAnimeType {
   fade,
   moveX,
@@ -11,6 +13,7 @@ enum _PhloxAnimeType {
   scale,
 }
 
+/// [PhloxAnimations] is very useful and simple animation
 class PhloxAnimations extends StatelessWidget {
   /// [duration] is time from start to end of animation
   /// [delay] is time to delay start animation
@@ -24,6 +27,8 @@ class PhloxAnimations extends StatelessWidget {
   /// [toY] for move widget to Y
   /// [fromScale] for scale widget from widgets current scale
   /// [toScale] for scale widget from widgets current scale
+  /// [fromDegrees] for rotate widget from widgets current angle
+  /// [toDegrees] for rotate widget to widgets current angle
 
   final Duration? duration;
   final Duration? delay;

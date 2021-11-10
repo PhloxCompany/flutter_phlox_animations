@@ -10,7 +10,9 @@ import 'phlox_animation_example_04.dart';
 import 'phlox_animation_example_05.dart';
 import 'single_test_animation_page.dart';
 
+/// main start
 void main() {
+  /// use materialApp for base design
   runApp(MaterialApp(
     title: 'Phlox Animations - Example',
     theme: ThemeData(
