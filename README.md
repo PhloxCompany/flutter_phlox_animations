@@ -1,6 +1,6 @@
 # 📱 Phlox Animations plugin
 
-[![flutter animation pub get package version](https://img.shields.io/badge/pub-0.0.2-red)](https://pub.dev/packages/phlox_animations)
+[![flutter animation pub get package version](https://img.shields.io/badge/pub-1.0.0-red)](https://pub.dev/packages/phlox_animations)
 [![flutter animation awesome Flutter](https://img.shields.io/badge/awesome-Flutter-blue)](https://pub.dev/packages/phlox_animations)
 
 **Phlox Animations** is a simple package to create beautiful custom animations . 
@@ -42,7 +42,7 @@ PhloxAnimations consists of several's feature.
 
 example :
 <br><br>
-<img src="./readme_files/phlox_animation_01.gif" width="400" alt="Flutter animations"/>
+<img src="https://github.com/phloxCompany/flutter_phlox_animations/blob/master/readme_files/phlox_animation_01.gif?raw=true" width="400" alt="Flutter animations"/>
 
 ```dart
 import 'package:flutter/cupertino.dart';
