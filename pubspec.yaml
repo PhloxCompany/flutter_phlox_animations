@@ -1,7 +1,7 @@
 name: phlox_animations
 description: Flutter phlox_animations is a simple package to create beautiful custom animations .
   Animate multiple properties at once and  consists of several's feature.
-version: 1.0.1
+version: 2.0.0
 homepage: https://github.com/phloxCompany/flutter_phlox_animations.git
 
 environment:
@@ -11,7 +11,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  simple_animations: ^4.0.0
 
 dev_dependencies:
   flutter_test:

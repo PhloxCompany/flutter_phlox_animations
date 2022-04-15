@@ -48,7 +48,7 @@ example :
 ```dart
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:phlox_animations/phlox_animations.dart';
+import 'package:phlox_animations/phlox_animations_page.dart';
 
 class PhloxAnimationsTest extends StatelessWidget {
   const PhloxAnimationsTest({Key? key}) : super(key: key);
