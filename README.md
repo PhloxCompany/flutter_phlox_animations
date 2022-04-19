@@ -13,61 +13,53 @@
 
 ```yaml
 dependencies:
-  phlox_animations: ^1.0.1
+  phlox_animations: any
 ```
 
 ```commandline
-flutter pub get
-flutter pub upgrade
+    flutter pub get
+    flutter pub upgrade
 ```
 
+#### import library
+```dart
+  import 'package:phlox_animations/phlox_animations_page.dart';
+```
 <!-- #toc -->
 
 ## Table of Contents
 
-[**Overview**](#overview)
-
-- [PhloxAnimations](#PhloxAnimations)
-- [PhloxAnimations.move()]()
-- [PhloxAnimations.opacity()]()
-- [PhloxAnimations.rotate()]()
-- [PhloxAnimations.scale()]()
-
-<!-- // end of #toc -->
-
-## Overview
-
-PhloxAnimations consists of several's feature.
-
-### PhloxAnimations
+### scale
+Animates the scale of a square within a stateless widget.
 
 example :
 <br><br>
-<img src="https://github.com/phloxCompany/flutter_phlox_animations/blob/master/readme_files/phlox_animation_01.gif?raw=true" width="400" alt="Flutter animations"/>
+<img src="https://github.com/phloxCompany/flutter_phlox_animations/blob/master/readme_files/scale.gif?raw=true"
+    width="400" alt="Flutter animations using phlox_animations package" loading="lazy"/>
 
 ```dart
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:phlox_animations/phlox_animations_page.dart';
-
-class PhloxAnimationsTest extends StatelessWidget {
-  const PhloxAnimationsTest({Key? key}) : super(key: key);
+class PhloxAnimationsScale extends StatelessWidget {
+  const PhloxAnimationsScale({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(),
-        body: Center(
-          child: PhloxAnimations(
-              fromOpacity: 0,
-              fromY: -60,
-              child: Container(
-                padding: const EdgeInsets.all(20),
-                color: Colors.orangeAccent,
-                child: const Text("Hello World"),
-              ),
-              duration: const Duration(seconds: 1)),
-        ));
+      body: Center(
+        child: PhloxAnimations(
+          duration: const Duration(seconds: 2),
+          child: Container(
+            height: 310,
+            width: 310,
+            decoration: BoxDecoration(
+                color: Colors.blue.shade900,
+                borderRadius: BorderRadius.circular(32)
+            ),
+          ),
+          fromScale: 0,
+          toScale: 2,
+        ),
+      ),
+    );;
   }
 }
 ```

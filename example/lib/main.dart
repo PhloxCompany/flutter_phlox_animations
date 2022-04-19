@@ -9,7 +9,7 @@ void main() {
     theme: ThemeData(
       primarySwatch: Colors.deepOrange,
     ),
-    home: const Example3(),
+    home: const Example1(),
   ));
 }
 
@@ -22,14 +22,17 @@ class Example1 extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: PhloxAnimations(
+          wait: Duration(seconds: 3),
           duration: const Duration(seconds: 2),
           child: Container(
-            color: Colors.red.shade900,
-            child: const Text("Animate me"),
+            height: 310,
+            width: 310,
+            decoration: BoxDecoration(
+                color: Colors.blue.shade900,
+              borderRadius: BorderRadius.circular(32)
+            ),
           ),
-          fromY: -100,
-          fromOpacity: .5,
-          toDegrees: 90,
+          fromScale: 0,
           toScale: 2,
         ),
       ),
@@ -97,7 +100,7 @@ class _Example3State extends State<Example3> {
     return Scaffold(
       body: Column(
         children: [
-          PhloxAnimations.builder(
+          PhloxAnimations.custom(
             controller: controller, // new
             duration: const Duration(seconds: 2),
             builder: (animations) => Transform.translate(
