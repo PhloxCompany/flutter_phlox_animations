@@ -22,7 +22,7 @@ class Example1 extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: PhloxAnimations(
-          wait: Duration(seconds: 3),
+          wait: const Duration(seconds: 3),
           duration: const Duration(seconds: 2),
           child: Container(
             height: 310,
@@ -32,8 +32,8 @@ class Example1 extends StatelessWidget {
               borderRadius: BorderRadius.circular(32)
             ),
           ),
-          fromScale: 0,
-          toScale: 2,
+          fromX: -200,
+          toX: 200,
         ),
       ),
     );
@@ -61,20 +61,17 @@ class _Example2State extends State<Example2> {
       ),
       body: Column(
         children: [
-          PhloxAnimations(
-            controller: controller,
-            // new
+          PhloxAnimations.builder(
             duration: const Duration(seconds: 2),
-            onTap: () {
-              print("object");
+            builder: (animations){
+              return Container(
+                color: Colors.red,
+                width: 100,
+                height: 200,
+                child: Text("Animate me"),
+              );
             },
-            child: Container(
-              color: Colors.red,
-              width: 100,
-              height: 200,
-              child: Text("Animate me"),
-            ),
-            toY: 100,
+
           ),
         ],
       ),
