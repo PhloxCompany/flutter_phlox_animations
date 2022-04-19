@@ -373,6 +373,7 @@ class _PhloxAnimationsState extends State<PhloxAnimations>
                 .toStringAsFixed(2)));
       })
       ..addStatusListener((status) {
+        _phloxAnimationsController!._animationStatus = status;
         _phloxAnimationsController!.statusListener?.call(status);
         if (_phloxAnimationsController!.loop) {
           if (status == AnimationStatus.completed) {

@@ -13,6 +13,11 @@ class PhloxAnimationsController {
   /// and get a Function that returns animation status
   AnimationStatusListener? statusListener;
 
+  /// [animationStatus] get animation status
+  AnimationStatus? get animationStatus =>
+      _animationStatus ?? AnimationStatus.dismissed;
+  AnimationStatus? _animationStatus;
+
   /// [loop] is animations loop
   /// [auto] is animations auto start
   bool loop = false;

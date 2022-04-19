@@ -59,7 +59,7 @@ class Example1 extends StatelessWidget {
           toScale: 2,
         ),
       ),
-    );;
+    );
   }
 }
 ```
@@ -174,7 +174,13 @@ class _Example2State extends State<Example2> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          start ? controller.forward() : controller.reverse();
+          if (controller.animationStatus == AnimationStatus.dismissed ||
+              controller.animationStatus == AnimationStatus.reverse) {
+            controller.forward();
+          } else if (controller.animationStatus == AnimationStatus.completed ||
+              controller.animationStatus == AnimationStatus.forward) {
+            controller.reverse();
+          }
           start = !start;
         },
       ),

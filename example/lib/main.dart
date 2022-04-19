@@ -54,13 +54,21 @@ class _Example2State extends State<Example2> {
   PhloxAnimationsController controller = PhloxAnimationsController();
 
   @override
+  initState() {
+    super.initState();
+    print(controller.animationStatus);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          if(controller.statusListener == AnimationStatus.forward){
+          if (controller.animationStatus == AnimationStatus.dismissed ||
+              controller.animationStatus == AnimationStatus.reverse) {
             controller.forward();
-          } else if(controller.statusListener == AnimationStatus.completed){
+          } else if (controller.animationStatus == AnimationStatus.completed ||
+              controller.animationStatus == AnimationStatus.forward) {
             controller.reverse();
           }
         },
