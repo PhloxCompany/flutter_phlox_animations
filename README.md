@@ -90,8 +90,8 @@ class Example2 extends StatelessWidget {
                 borderRadius: BorderRadius.circular(32)
             ),
           ), 
-          `**`fromX`**`: -200,
-          `**`toX`**`: 200,
+          **fromX**: -200,
+          **toX**: 200,
         ),
       ),
     );
