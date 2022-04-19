@@ -153,7 +153,7 @@ Animates the move x,y and rotate of a Widget within a state full widget using co
 
 example :
 <br><br>
-<img src="https://github.com/phloxCompany/flutter_phlox_animations/blob/master/readme_files/controller.gif?raw=true"
+<img src="https://github.com/phloxCompany/flutter_phlox_animations/blob/master/readme_files/controller01.gif?raw=true"
 width="400" alt="Flutter animations using phlox_animations package" loading="lazy"/>
 
 ```dart
@@ -208,4 +208,8 @@ class _Example2State extends State<Example2> {
 
 
 ## Curves
-<ifreme src="https://api.flutter.dev/flutter/animation/Curves-class.html" width="100%"></ifreme>
+
+<figure class="video_container">
+<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://api.flutter.dev/flutter/animation/Curves-class.html" style="border: 1px solid black"></iframe>
+</figure>
+
