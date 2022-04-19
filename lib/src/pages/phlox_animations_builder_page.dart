@@ -39,6 +39,7 @@ class PhloxAnimationsBuilder extends StatefulWidget {
   final double? toScale;
   final double? fromDegrees;
   final double? toDegrees;
+  final Offset? rotateOffset;
   final Curve? moveXCurve;
   final Curve? moveYCurve;
   final Curve? scaleCurve;
@@ -78,6 +79,7 @@ class PhloxAnimationsBuilder extends StatefulWidget {
     this.toScale,
     this.fromDegrees,
     this.toDegrees,
+    this.rotateOffset,
     this.moveXCurve,
     this.moveYCurve,
     this.scaleCurve,
@@ -112,6 +114,7 @@ class PhloxAnimationsBuilder extends StatefulWidget {
     this.toScale,
     required this.fromDegrees,
     required this.toDegrees,
+    this.rotateOffset,
     this.moveXCurve,
     this.moveYCurve,
     this.scaleCurve,
@@ -146,6 +149,7 @@ class PhloxAnimationsBuilder extends StatefulWidget {
     this.toScale,
     this.fromDegrees,
     this.toDegrees,
+    this.rotateOffset,
     this.moveXCurve,
     this.moveYCurve,
     this.scaleCurve,
@@ -180,6 +184,7 @@ class PhloxAnimationsBuilder extends StatefulWidget {
     this.toScale,
     this.fromDegrees,
     this.toDegrees,
+    this.rotateOffset,
     this.moveXCurve,
     this.moveYCurve,
     this.scaleCurve,
@@ -327,9 +332,11 @@ class _PhloxAnimationsBuilderState extends State<PhloxAnimationsBuilder>
       builder: (context, child) {
         return Opacity(
           opacity: _phloxAnimationsController!.opacity!.value,
-          child: RotationTransition(
-            turns: AlwaysStoppedAnimation(
-              _phloxAnimationsController!.rotate!.value / 360,
+          child: Transform.rotate(
+            angle: degreeToRadian(_phloxAnimationsController!.rotate!.value),
+            origin: widget.rotateOffset ?? Offset(
+              _phloxAnimationsController!.moveX!.value,
+              _phloxAnimationsController!.moveY!.value,
             ),
             child: Transform.scale(
               scale: _phloxAnimationsController!.scale!.value,
@@ -371,5 +378,8 @@ class _PhloxAnimationsBuilderState extends State<PhloxAnimationsBuilder>
         ),
       )),
     );
+  }
+  double degreeToRadian(double degree) {
+    return degree * 3.141592653589793238 / 180;
   }
 }

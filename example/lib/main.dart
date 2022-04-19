@@ -9,7 +9,7 @@ void main() {
     theme: ThemeData(
       primarySwatch: Colors.deepOrange,
     ),
-    home: const Example1(),
+    home: const Example2(),
   ));
 }
 
@@ -29,8 +29,7 @@ class Example1 extends StatelessWidget {
             width: 250,
             decoration: BoxDecoration(
                 color: Colors.blue.shade900,
-              borderRadius: BorderRadius.circular(32)
-            ),
+                borderRadius: BorderRadius.circular(32)),
           ),
           fromX: -200,
           toX: 200,
@@ -54,29 +53,36 @@ class Example2 extends StatefulWidget {
 class _Example2State extends State<Example2> {
   PhloxAnimationsController controller = PhloxAnimationsController();
 
-  bool start = true;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          if(controller.statusListener == AnimationStatus.forward){
+            controller.forward();
+          } else if(controller.statusListener == AnimationStatus.completed){
+            controller.reverse();
+          }
+        },
       ),
-      body: Column(
-        children: [
-          PhloxAnimations.builder(
-            duration: const Duration(seconds: 2),
-            builder: (animations){
-              return Container(
-                color: Colors.red,
-                width: 100,
-                height: 200,
-                child: Text("Animate me"),
-              );
-            },
-
+      body: Center(
+        child: PhloxAnimations(
+          auto: false,
+          controller: controller,
+          toDegrees: 90,
+          duration: const Duration(seconds: 2),
+          child: Container(
+            height: 250,
+            width: 250,
+            decoration: BoxDecoration(
+                color: Colors.blue.shade900,
+                borderRadius: BorderRadius.circular(32)),
           ),
-        ],
+          fromX: -100,
+          toX: 100,
+          toY: 200,
+          fromY: -200,
+        ),
       ),
     );
   }

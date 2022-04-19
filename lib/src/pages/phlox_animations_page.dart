@@ -36,6 +36,7 @@ class PhloxAnimations extends StatefulWidget {
   final double? toScale;
   final double? fromDegrees;
   final double? toDegrees;
+  final Offset? rotateOffset;
   final Curve? moveXCurve;
   final Curve? moveYCurve;
   final Curve? scaleCurve;
@@ -64,6 +65,7 @@ class PhloxAnimations extends StatefulWidget {
     this.toScale,
     this.fromDegrees,
     this.toDegrees,
+    this.rotateOffset,
     this.moveXCurve,
     this.moveYCurve,
     this.scaleCurve,
@@ -93,6 +95,7 @@ class PhloxAnimations extends StatefulWidget {
     this.toScale,
     this.fromDegrees,
     this.toDegrees,
+    this.rotateOffset,
     this.moveXCurve,
     this.moveYCurve,
     this.scaleCurve,
@@ -122,6 +125,7 @@ class PhloxAnimations extends StatefulWidget {
     this.toScale,
     this.fromDegrees,
     this.toDegrees,
+    this.rotateOffset,
     this.moveXCurve,
     this.moveYCurve,
     this.scaleCurve,
@@ -151,6 +155,7 @@ class PhloxAnimations extends StatefulWidget {
     this.toScale,
     required this.fromDegrees,
     required this.toDegrees,
+    this.rotateOffset,
     this.moveXCurve,
     this.moveYCurve,
     this.scaleCurve,
@@ -245,6 +250,7 @@ class PhloxAnimations extends StatefulWidget {
     double? toScale,
     double? fromDegrees,
     double? toDegrees,
+    Offset? rotateOffset,
     Curve? moveXCurve,
     Curve? moveYCurve,
     Curve? scaleCurve,
@@ -277,6 +283,7 @@ class PhloxAnimations extends StatefulWidget {
         toScale: toScale,
         fromDegrees: fromDegrees,
         toDegrees: toDegrees,
+        rotateOffset: rotateOffset,
         moveXCurve: moveXCurve,
         moveYCurve: moveYCurve,
         scaleCurve: scaleCurve,
@@ -393,31 +400,33 @@ class _PhloxAnimationsState extends State<PhloxAnimations>
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: widget.onTap,
-      child: AnimatedBuilder(
-        animation: _phloxAnimationsController!.progress!,
-        builder: (context, child) {
-          return Opacity(
-            opacity: _phloxAnimationsController!.opacity!.value,
-            child: RotationTransition(
-              turns: AlwaysStoppedAnimation(
-                _phloxAnimationsController!.rotate!.value / 360,
-              ),
-              child: Transform.scale(
-                scale: _phloxAnimationsController!.scale!.value,
-                child: Transform.translate(
-                    offset: Offset(
-                      _phloxAnimationsController!.moveX!.value,
-                      _phloxAnimationsController!.moveY!.value,
-                    ),
-                    child: child),
-              ),
+    return AnimatedBuilder(
+      animation: _phloxAnimationsController!.progress!,
+      builder: (context, child) {
+        return Opacity(
+          opacity: _phloxAnimationsController!.opacity!.value,
+          child: Transform.rotate(
+            angle: degreeToRadian(_phloxAnimationsController!.rotate!.value),
+            origin: widget.rotateOffset ?? Offset(
+              _phloxAnimationsController!.moveX!.value,
+              _phloxAnimationsController!.moveY!.value,
             ),
-          );
-        },
-        child: widget.child,
-      ),
+            child: Transform.scale(
+              scale: _phloxAnimationsController!.scale!.value,
+              child: Transform.translate(
+                  offset: Offset(
+                    _phloxAnimationsController!.moveX!.value,
+                    _phloxAnimationsController!.moveY!.value,
+                  ),
+                  child: child),
+            ),
+          ),
+        );
+      },
+      child: widget.child,
     );
+  }
+  double degreeToRadian(double degree) {
+    return degree * 3.141592653589793238 / 180;
   }
 }
