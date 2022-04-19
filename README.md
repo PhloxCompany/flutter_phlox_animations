@@ -89,8 +89,8 @@ class Example2 extends StatelessWidget {
                 color: Colors.blue.shade900,
                 borderRadius: BorderRadius.circular(32)
             ),
-          ), 
-          **fromX**: -200,
+          ),
+          <b>fromX</b>: -200,
           **toX**: 200,
         ),
       ),
