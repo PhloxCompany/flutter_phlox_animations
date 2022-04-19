@@ -25,8 +25,8 @@ class Example1 extends StatelessWidget {
           wait: const Duration(seconds: 3),
           duration: const Duration(seconds: 2),
           child: Container(
-            height: 310,
-            width: 310,
+            height: 250,
+            width: 250,
             decoration: BoxDecoration(
                 color: Colors.blue.shade900,
               borderRadius: BorderRadius.circular(32)
@@ -34,6 +34,9 @@ class Example1 extends StatelessWidget {
           ),
           fromX: -200,
           toX: 200,
+          fromY: -200,
+          toY: 200,
+          loop: true,
         ),
       ),
     );

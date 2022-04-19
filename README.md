@@ -90,13 +90,51 @@ class Example2 extends StatelessWidget {
                 borderRadius: BorderRadius.circular(32)
             ),
           ),
-          <b>fromX</b>: -200,
-          **toX**: 200,
+          fromX: -200, /// change
+          toX: 200, /// change
         ),
       ),
     );
   }
 }
 ```
-### move
+### move x,*y* with **Loop**
 
+
+Animates the move x of a Widget within a stateless widget.
+
+example :
+<br><br>
+<img src="https://github.com/phloxCompany/flutter_phlox_animations/blob/master/readme_files/moveXYLoop.gif?raw=true"
+width="400" alt="Flutter animations using phlox_animations package" loading="lazy"/>
+
+```dart
+class Example3 extends StatelessWidget {
+  const Example3({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: PhloxAnimations(
+          wait: const Duration(seconds: 3),
+          duration: const Duration(seconds: 2),
+          child: Container(
+            height: 250,
+            width: 250,
+            decoration: BoxDecoration(
+                color: Colors.blue.shade900,
+                borderRadius: BorderRadius.circular(32)
+            ),
+          ),
+          fromX: -200,
+          toX: 200,
+          fromY: -200, /// change
+          toY: 200, /// change
+          loop: true, /// change **Loop**
+        ),
+      ),
+    );
+  }
+}
+```
