@@ -1,6 +1,24 @@
 part of phlox_animations;
 
 class PhloxAnimations extends StatefulWidget {
+  /// [duration] is time from start to end of animation
+  /// [wait] is time to delay start animation
+  /// [child] is required and you can add your widget into
+  /// child and your child animate
+  /// [fromOpacity]s value from 0 to 1 and change widget alpha(Opacity)
+  /// [toOpacity]s value from 0 to 1 and change widget alpha(Opacity)
+  /// [fromX] for move widget from x
+  /// [fromY] for move widget from y
+  /// [toX] for move widget to x
+  /// [toY] for move widget to Y
+  /// [fromScale] for scale widget from widgets current scale
+  /// [toScale] for scale widget from widgets current scale
+  /// [fromDegrees] for rotate widget from widgets current angle
+  /// [toDegrees] for rotate widget to widgets current angle
+  /// [progress] is listener progress animation
+  /// [moveXCurve], [moveYCurve], [scaleCurve], [opacityCurve], [rotateCurve],
+  /// [colorChangeCurve] animations curve
+
   final Widget? child;
   final bool? loop;
   final bool? auto;
@@ -25,6 +43,7 @@ class PhloxAnimations extends StatefulWidget {
   final Curve? rotateCurve;
   final Curve? colorChangeCurve;
   final _PhloxAnimationsProgress? progress;
+  final VoidCallback? onTap;
 
   const PhloxAnimations({
     Key? key,
@@ -52,6 +71,7 @@ class PhloxAnimations extends StatefulWidget {
     this.rotateCurve,
     this.colorChangeCurve,
     this.progress,
+    this.onTap,
   }) : super(key: key);
 
   const PhloxAnimations.opacity({
@@ -80,6 +100,7 @@ class PhloxAnimations extends StatefulWidget {
     this.rotateCurve,
     this.colorChangeCurve,
     this.progress,
+    this.onTap,
   }) : super(key: key);
 
   const PhloxAnimations.move({
@@ -108,6 +129,36 @@ class PhloxAnimations extends StatefulWidget {
     this.rotateCurve,
     this.colorChangeCurve,
     this.progress,
+    this.onTap,
+  }) : super(key: key);
+
+  const PhloxAnimations.rotate({
+    Key? key,
+    required this.duration,
+    required this.child,
+    this.controller,
+    this.reverseDuration,
+    this.loop,
+    this.auto,
+    this.wait,
+    this.fromX,
+    this.fromY,
+    this.toX,
+    this.toY,
+    this.fromOpacity,
+    this.toOpacity,
+    this.fromScale,
+    this.toScale,
+    required this.fromDegrees,
+    required this.toDegrees,
+    this.moveXCurve,
+    this.moveYCurve,
+    this.scaleCurve,
+    this.opacityCurve,
+    this.rotateCurve,
+    this.colorChangeCurve,
+    this.progress,
+    this.onTap,
   }) : super(key: key);
 
   static PhloxCustomAnimations custom({
@@ -341,14 +392,10 @@ class _PhloxAnimationsState extends State<PhloxAnimations>
   }
 
   @override
-  void dispose() {
-    _phloxAnimationsController!._animationController!.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return AnimatedBuilder(
+    return InkWell(
+      onTap: widget.onTap,
+      child: AnimatedBuilder(
         animation: _phloxAnimationsController!.progress!,
         builder: (context, child) {
           return Opacity(
@@ -369,6 +416,8 @@ class _PhloxAnimationsState extends State<PhloxAnimations>
             ),
           );
         },
-        child: widget.child);
+        child: widget.child,
+      ),
+    );
   }
 }

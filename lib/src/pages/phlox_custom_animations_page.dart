@@ -1,6 +1,28 @@
 part of phlox_animations;
 
 class PhloxCustomAnimations extends StatefulWidget {
+  /// [duration] is time from start to end of animation
+  /// [wait] is time to delay start animation
+  /// [builder] is required and you can add your widget into
+  /// child and your child animate
+  /// [fromOpacity]s value from 0 to 1 and change widget alpha(Opacity)
+  /// [toOpacity]s value from 0 to 1 and change widget alpha(Opacity)
+  /// [fromX] for move widget from x
+  /// [fromY] for move widget from y
+  /// [toX] for move widget to x
+  /// [toY] for move widget to Y
+  /// [fromScale] for scale widget from widgets current scale
+  /// [toScale] for scale widget from widgets current scale
+  /// [fromDegrees] for rotate widget from widgets current angle
+  /// [toDegrees] for rotate widget to widgets current angle
+  /// [progress] is listener progress animation
+  /// [fromColor] for start animation with selection color
+  /// [toColor] for end animation with selection color
+  /// [fromRadius] for rounded radios
+  /// [toRadius] for rounded radios
+  /// [moveXCurve], [moveYCurve], [scaleCurve], [opacityCurve], [rotateCurve],
+  /// [colorChangeCurve], [radiusCurve] animations curve
+
   final bool? loop;
   final bool? auto;
   final Duration duration;
@@ -30,7 +52,6 @@ class PhloxCustomAnimations extends StatefulWidget {
   final double? fromRadius;
   final double? toRadius;
   final Curve? radiusCurve;
-
 
   const PhloxCustomAnimations({
     Key? key,
@@ -69,8 +90,8 @@ class PhloxCustomAnimations extends StatefulWidget {
   State<PhloxCustomAnimations> createState() => _PhloxCustomAnimationsState();
 }
 
-class _PhloxCustomAnimationsState extends State<PhloxCustomAnimations> with SingleTickerProviderStateMixin {
-
+class _PhloxCustomAnimationsState extends State<PhloxCustomAnimations>
+    with SingleTickerProviderStateMixin {
   PhloxAnimationsController? _phloxAnimationsController;
 
   void _initAnimations() {
@@ -89,60 +110,60 @@ class _PhloxCustomAnimationsState extends State<PhloxCustomAnimations> with Sing
     _phloxAnimationsController!.moveX =
         Tween<double>(begin: widget.fromX ?? 0, end: widget.toX ?? 0)
             .animate(widget.moveXCurve == null
-            ? _phloxAnimationsController!._animationController!
-            : CurvedAnimation(
-          parent: _phloxAnimationsController!._animationController!,
-          curve: widget.moveXCurve!,
-        ));
+                ? _phloxAnimationsController!._animationController!
+                : CurvedAnimation(
+                    parent: _phloxAnimationsController!._animationController!,
+                    curve: widget.moveXCurve!,
+                  ));
     _phloxAnimationsController!.moveY =
         Tween<double>(begin: widget.fromY ?? 0, end: widget.toY ?? 0)
             .animate(widget.moveXCurve == null
+                ? _phloxAnimationsController!._animationController!
+                : CurvedAnimation(
+                    parent: _phloxAnimationsController!._animationController!,
+                    curve: widget.moveXCurve!,
+                  ));
+    _phloxAnimationsController!.color = ColorTween(
+            begin: widget.fromColor ?? Colors.transparent,
+            end: widget.toColor ?? Colors.transparent)
+        .animate(widget.colorChangeCurve == null
             ? _phloxAnimationsController!._animationController!
             : CurvedAnimation(
-          parent: _phloxAnimationsController!._animationController!,
-          curve: widget.moveXCurve!,
-        ));
-    _phloxAnimationsController!.color = ColorTween(
-        begin: widget.fromColor ?? Colors.transparent,
-        end: widget.toColor ?? Colors.transparent)
-        .animate(widget.colorChangeCurve == null
-        ? _phloxAnimationsController!._animationController!
-        : CurvedAnimation(
-      parent: _phloxAnimationsController!._animationController!,
-      curve: widget.colorChangeCurve!,
-    ));
+                parent: _phloxAnimationsController!._animationController!,
+                curve: widget.colorChangeCurve!,
+              ));
     _phloxAnimationsController!.scale =
         Tween<double>(begin: widget.fromScale ?? 1, end: widget.toScale ?? 1)
             .animate(widget.scaleCurve == null
+                ? _phloxAnimationsController!._animationController!
+                : CurvedAnimation(
+                    parent: _phloxAnimationsController!._animationController!,
+                    curve: widget.scaleCurve!,
+                  ));
+    _phloxAnimationsController!.rotate = Tween<double>(
+            begin: widget.fromDegrees ?? 0, end: widget.toDegrees ?? 0)
+        .animate(widget.rotateCurve == null
             ? _phloxAnimationsController!._animationController!
             : CurvedAnimation(
-          parent: _phloxAnimationsController!._animationController!,
-          curve: widget.scaleCurve!,
-        ));
-    _phloxAnimationsController!.rotate = Tween<double>(
-        begin: widget.fromDegrees ?? 0, end: widget.toDegrees ?? 0)
-        .animate(widget.rotateCurve == null
-        ? _phloxAnimationsController!._animationController!
-        : CurvedAnimation(
-      parent: _phloxAnimationsController!._animationController!,
-      curve: widget.rotateCurve!,
-    ));
+                parent: _phloxAnimationsController!._animationController!,
+                curve: widget.rotateCurve!,
+              ));
     _phloxAnimationsController!.opacity = Tween<double>(
-        begin: widget.fromOpacity ?? 1, end: widget.toOpacity ?? 1)
+            begin: widget.fromOpacity ?? 1, end: widget.toOpacity ?? 1)
         .animate(widget.opacityCurve == null
-        ? _phloxAnimationsController!._animationController!
-        : CurvedAnimation(
-      parent: _phloxAnimationsController!._animationController!,
-      curve: widget.opacityCurve!,
-    ));
+            ? _phloxAnimationsController!._animationController!
+            : CurvedAnimation(
+                parent: _phloxAnimationsController!._animationController!,
+                curve: widget.opacityCurve!,
+              ));
     _phloxAnimationsController!.radius =
         Tween<double>(begin: widget.fromRadius ?? 0, end: widget.toRadius ?? 4)
             .animate(widget.radiusCurve == null
-            ? _phloxAnimationsController!._animationController!
-            : CurvedAnimation(
-          parent: _phloxAnimationsController!._animationController!,
-          curve: widget.radiusCurve!,
-        ));
+                ? _phloxAnimationsController!._animationController!
+                : CurvedAnimation(
+                    parent: _phloxAnimationsController!._animationController!,
+                    curve: widget.radiusCurve!,
+                  ));
 
     _phloxAnimationsController!.progress = Tween<double>(begin: 0.0, end: 1.0)
         .animate(_phloxAnimationsController!._animationController!)
@@ -195,46 +216,36 @@ class _PhloxCustomAnimationsState extends State<PhloxCustomAnimations> with Sing
   }
 
   @override
-  void dispose() {
-    _phloxAnimationsController!._animationController!.dispose();
-    super.dispose();
-  }
-
-
-  @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
       animation: _phloxAnimationsController!.progress!,
       builder: (context, child) => widget.builder!(
-          PhloxAnimationsValue(
-            _phloxAnimationsController!.color!.value!,
-            _phloxAnimationsController!.moveX!.value,
-            _phloxAnimationsController!.moveY!.value,
-            _phloxAnimationsController!.scale!.value,
-            _phloxAnimationsController!.rotate!.value,
-            _phloxAnimationsController!.opacity!.value,
-            _phloxAnimationsController!.radius!.value,
-            double.parse(
-              (_phloxAnimationsController!.progress?.value ?? 0)
-                  .toStringAsFixed(3),
-            ),
+        PhloxAnimationsValue(
+          _phloxAnimationsController!.color!.value!,
+          _phloxAnimationsController!.moveX!.value,
+          _phloxAnimationsController!.moveY!.value,
+          _phloxAnimationsController!.scale!.value,
+          _phloxAnimationsController!.rotate!.value,
+          _phloxAnimationsController!.opacity!.value,
+          _phloxAnimationsController!.radius!.value,
+          double.parse(
+            (_phloxAnimationsController!.progress?.value ?? 0)
+                .toStringAsFixed(3),
           ),
         ),
-      child: widget.builder!(
-          PhloxAnimationsValue(
-            _phloxAnimationsController!.color!.value!,
-            _phloxAnimationsController!.moveX!.value,
-            _phloxAnimationsController!.moveY!.value,
-            _phloxAnimationsController!.scale!.value,
-            _phloxAnimationsController!.rotate!.value,
-            _phloxAnimationsController!.opacity!.value,
-            _phloxAnimationsController!.radius!.value,
-            double.parse(
-              (_phloxAnimationsController!.progress?.value ?? 0)
-                  .toStringAsFixed(3),
-            ),
-          )
       ),
+      child: widget.builder!(PhloxAnimationsValue(
+        _phloxAnimationsController!.color!.value!,
+        _phloxAnimationsController!.moveX!.value,
+        _phloxAnimationsController!.moveY!.value,
+        _phloxAnimationsController!.scale!.value,
+        _phloxAnimationsController!.rotate!.value,
+        _phloxAnimationsController!.opacity!.value,
+        _phloxAnimationsController!.radius!.value,
+        double.parse(
+          (_phloxAnimationsController!.progress?.value ?? 0).toStringAsFixed(3),
+        ),
+      )),
     );
   }
 }

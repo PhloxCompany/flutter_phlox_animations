@@ -1,6 +1,28 @@
 part of phlox_animations;
 
 class PhloxAnimationsBuilder extends StatefulWidget {
+  /// [duration] is time from start to end of animation
+  /// [wait] is time to delay start animation
+  /// [builder] is required and you can add your widget into
+  /// child and your child animate
+  /// [fromOpacity]s value from 0 to 1 and change widget alpha(Opacity)
+  /// [toOpacity]s value from 0 to 1 and change widget alpha(Opacity)
+  /// [fromX] for move widget from x
+  /// [fromY] for move widget from y
+  /// [toX] for move widget to x
+  /// [toY] for move widget to Y
+  /// [fromScale] for scale widget from widgets current scale
+  /// [toScale] for scale widget from widgets current scale
+  /// [fromDegrees] for rotate widget from widgets current angle
+  /// [toDegrees] for rotate widget to widgets current angle
+  /// [progress] is listener progress animation
+  /// [fromColor] for start animation with selection color
+  /// [toColor] for end animation with selection color
+  /// [fromRadius] for rounded radios
+  /// [toRadius] for rounded radios
+  /// [moveXCurve], [moveYCurve], [scaleCurve], [opacityCurve], [rotateCurve],
+  /// [colorChangeCurve], [radiusCurve] animations curve
+
   final bool? loop;
   final bool? auto;
   final Duration duration;
@@ -31,6 +53,7 @@ class PhloxAnimationsBuilder extends StatefulWidget {
   final double? toRadius;
   final Curve? radiusCurve;
 
+  /// constructor --
   const PhloxAnimationsBuilder({
     Key? key,
     required this.duration,
@@ -64,14 +87,118 @@ class PhloxAnimationsBuilder extends StatefulWidget {
     this.progress,
   }) : super(key: key);
 
+  /// constructor --
+  const PhloxAnimationsBuilder.rotate({
+    Key? key,
+    required this.duration,
+    required this.builder,
+    this.controller,
+    this.reverseDuration,
+    this.wait,
+    this.fromX,
+    this.loop,
+    this.auto,
+    this.fromY,
+    this.toX,
+    this.fromRadius,
+    this.toRadius,
+    this.fromColor,
+    this.radiusCurve,
+    this.toColor,
+    this.toY,
+    this.fromOpacity,
+    this.toOpacity,
+    this.fromScale,
+    this.toScale,
+    required this.fromDegrees,
+    required this.toDegrees,
+    this.moveXCurve,
+    this.moveYCurve,
+    this.scaleCurve,
+    this.opacityCurve,
+    this.rotateCurve,
+    this.colorChangeCurve,
+    this.progress,
+  }) : super(key: key);
+
+  /// constructor -- [PhloxAnimationsBuilder.opacity]
+  const PhloxAnimationsBuilder.opacity({
+    Key? key,
+    required this.duration,
+    required this.builder,
+    this.controller,
+    this.reverseDuration,
+    this.wait,
+    this.fromX,
+    this.loop,
+    this.auto,
+    this.fromY,
+    this.toX,
+    this.fromRadius,
+    this.toRadius,
+    this.fromColor,
+    this.radiusCurve,
+    this.toColor,
+    this.toY,
+    required this.fromOpacity,
+    required this.toOpacity,
+    this.fromScale,
+    this.toScale,
+    this.fromDegrees,
+    this.toDegrees,
+    this.moveXCurve,
+    this.moveYCurve,
+    this.scaleCurve,
+    this.opacityCurve,
+    this.rotateCurve,
+    this.colorChangeCurve,
+    this.progress,
+  }) : super(key: key);
+
+  /// constructor -- [PhloxAnimationsBuilder.move]
+  const PhloxAnimationsBuilder.move({
+    Key? key,
+    required this.duration,
+    required this.builder,
+    this.controller,
+    this.reverseDuration,
+    this.wait,
+    required this.fromX,
+    this.loop,
+    this.auto,
+    required this.fromY,
+    required this.toX,
+    this.fromRadius,
+    this.toRadius,
+    this.fromColor,
+    this.radiusCurve,
+    this.toColor,
+    required this.toY,
+    this.fromOpacity,
+    this.toOpacity,
+    this.fromScale,
+    this.toScale,
+    this.fromDegrees,
+    this.toDegrees,
+    this.moveXCurve,
+    this.moveYCurve,
+    this.scaleCurve,
+    this.opacityCurve,
+    this.rotateCurve,
+    this.colorChangeCurve,
+    this.progress,
+  }) : super(key: key);
+
   @override
   State<PhloxAnimationsBuilder> createState() => _PhloxAnimationsBuilderState();
 }
 
 class _PhloxAnimationsBuilderState extends State<PhloxAnimationsBuilder>
     with SingleTickerProviderStateMixin {
+  /// [_phloxAnimationsController] is phlox animations animation controller
   PhloxAnimationsController? _phloxAnimationsController;
 
+  /// [_initAnimations] init all animations
   void _initAnimations() {
     _phloxAnimationsController =
         widget.controller ?? PhloxAnimationsController();
@@ -191,12 +318,6 @@ class _PhloxAnimationsBuilderState extends State<PhloxAnimationsBuilder>
   void initState() {
     super.initState();
     _initAnimations();
-  }
-
-  @override
-  void dispose() {
-    _phloxAnimationsController!._animationController!.dispose();
-    super.dispose();
   }
 
   @override
