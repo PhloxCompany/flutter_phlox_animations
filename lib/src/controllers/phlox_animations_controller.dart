@@ -97,7 +97,7 @@ class PhloxAnimationsController {
                 curve: scaleCurve,
               ));
     rotate =
-        Tween<double>(begin: rotate!.value, end: toDegrees ?? rotate!.value)
+        Tween<double>(begin: rotate?.value, end: toDegrees ?? rotate?.value)
             .animate(rotateCurve == null
                 ? _animationController!
                 : CurvedAnimation(
@@ -105,8 +105,8 @@ class PhloxAnimationsController {
                     curve: rotateCurve,
                   ));
     color = ColorTween(
-            begin: color!.value ?? Colors.transparent,
-            end: toColor ?? color!.value)
+            begin: color?.value ?? Colors.transparent,
+            end: toColor ?? color?.value)
         .animate(colorChangeCurve == null
             ? _animationController!
             : CurvedAnimation(
@@ -163,7 +163,7 @@ class PhloxAnimationsController {
     this.loop = loop ?? false;
 
     // init [moveX]
-    moveX = Tween<double>(begin: fromX ?? moveX!.value, end: toX ?? 0)
+    moveX = Tween<double>(begin: fromX ?? moveX?.value ?? 0, end: toX ?? 0)
         .animate(moveXCurve == null
             ? _animationController!
             : CurvedAnimation(
@@ -171,7 +171,7 @@ class PhloxAnimationsController {
                 curve: moveXCurve,
               ));
     // init [moveY]
-    moveY = Tween<double>(begin: fromY ?? moveY!.value, end: toY ?? 0)
+    moveY = Tween<double>(begin: fromY ?? moveY?.value ?? 0, end: toY ?? 0)
         .animate(moveXCurve == null
             ? _animationController!
             : CurvedAnimation(
@@ -179,7 +179,7 @@ class PhloxAnimationsController {
                 curve: moveXCurve,
               ));
     // init [scale]
-    scale = Tween<double>(begin: fromScale ?? scale!.value, end: toScale ?? 1)
+    scale = Tween<double>(begin: fromScale ?? scale?.value ?? 1, end: toScale ?? 1)
         .animate(scaleCurve == null
             ? _animationController!
             : CurvedAnimation(
@@ -188,7 +188,7 @@ class PhloxAnimationsController {
               ));
     // init [rotate]
     rotate =
-        Tween<double>(begin: fromDegrees ?? rotate!.value, end: toDegrees ?? 0)
+        Tween<double>(begin: fromDegrees ?? rotate?.value ?? 0, end: toDegrees ?? 0)
             .animate(rotateCurve == null
                 ? _animationController!
                 : CurvedAnimation(
@@ -197,8 +197,8 @@ class PhloxAnimationsController {
                   ));
     // init [color]
     color = ColorTween(
-            begin: fromColor ?? color!.value ?? Colors.transparent,
-            end: toColor ?? color!.value ?? Colors.transparent)
+            begin: fromColor ?? color?.value ?? Colors.transparent,
+            end: toColor ?? color?.value ?? Colors.transparent)
         .animate(colorChangeCurve == null
             ? _animationController!
             : CurvedAnimation(
@@ -207,7 +207,7 @@ class PhloxAnimationsController {
               ));
     // init [opacity]
     opacity =
-        Tween<double>(begin: fromOpacity ?? opacity!.value, end: toOpacity ?? 1)
+        Tween<double>(begin: fromOpacity ?? opacity?.value ?? 1, end: toOpacity ?? 1)
             .animate(opacityCurve == null
                 ? _animationController!
                 : CurvedAnimation(
@@ -217,7 +217,7 @@ class PhloxAnimationsController {
     // init [radius]
     radius = Tween<double>(
             begin: fromRoundedRadius ?? radius?.value ?? 0,
-            end: toRoundedRadius ?? radius?.value)
+            end: toRoundedRadius ?? radius?.value ?? 0)
         .animate(_animationController!);
     // init [progress]
     progress =

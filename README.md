@@ -72,6 +72,7 @@ example :
 <img src="https://github.com/phloxCompany/flutter_phlox_animations/blob/master/readme_files/moveX_01.gif?raw=true"
     width="400" alt="Flutter animations using phlox_animations package" loading="lazy"/>
 
+### code:
 ```dart
 class Example2 extends StatelessWidget {
   const Example2({Key? key}) : super(key: key);
@@ -108,6 +109,7 @@ example :
 <img src="https://github.com/phloxCompany/flutter_phlox_animations/blob/master/readme_files/moveXYLoop.gif?raw=true"
 width="400" alt="Flutter animations using phlox_animations package" loading="lazy"/>
 
+### code:
 ```dart
 class Example3 extends StatelessWidget {
   const Example3({Key? key}) : super(key: key);
@@ -117,7 +119,6 @@ class Example3 extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: PhloxAnimations(
-          wait: const Duration(seconds: 3),
           duration: const Duration(seconds: 2),
           child: Container(
             height: 250,
@@ -156,6 +157,7 @@ example :
 <img src="https://github.com/phloxCompany/flutter_phlox_animations/blob/master/readme_files/controller01.gif?raw=true"
 width="400" alt="Flutter animations using phlox_animations package" loading="lazy"/>
 
+### code:
 ```dart
 class Example2 extends StatefulWidget {
   const Example2({Key? key}) : super(key: key);
@@ -218,6 +220,7 @@ example :
 <img src="https://github.com/phloxCompany/flutter_phlox_animations/blob/master/readme_files/builder_color.gif?raw=true"
 width="400" alt="Flutter animations using phlox_animations package" loading="lazy"/>
 
+### code:
 ```dart
 class Example2 extends StatefulWidget {
   const Example2({Key? key}) : super(key: key);
@@ -287,6 +290,7 @@ example :
 <img src="https://github.com/phloxCompany/flutter_phlox_animations/blob/master/readme_files/custom_scale_rotate_color.gif?raw=true"
 width="400" alt="Flutter animations using phlox_animations package" loading="lazy"/>
 
+### code:
 ```dart
 class Example3 extends StatefulWidget {
   const Example3({Key? key}) : super(key: key);
@@ -355,14 +359,20 @@ class _Example3State extends State<Example3> {
 
 }
 ```
-| WARNING: if you wanna add click effect or buttons, add inside #custom animations! |
+
+
+
+| WARNING: if you wanna add a click effect or button, add them inside #custom animations! |
 | --- |
+
+
 
 for example :
 <br><br>
 <img src="https://github.com/phloxCompany/flutter_phlox_animations/blob/master/readme_files/custom_button.gif?raw=true"
 width="400" alt="Flutter animations using phlox_animations package" loading="lazy"/>
 
+### code:
 ```dart
 class Example3 extends StatefulWidget {
   const Example3({Key? key}) : super(key: key);
@@ -421,12 +431,174 @@ class _Example3State extends State<Example3> {
           fromY: -100,
           toScale: 3,
           fromRadius: 8, // add fromRadius
-          toRadius: 24, // add to radius
+          toRadius: 24, // add toRadius
         ),
       ),
     );
   }
 }
 ```
+
+# PhloxAnimationsController methods
+
+if you add 
+
+| PhloxAnimationsController controller = PhloxAnimationsController(); |
+| --- |
+
+You can animate your widget with the desired animations using 
+```
+    controller..animateTo(
+      toX: -200
+    )..forward();
+```
+in your button's onPressed
+
+for example:
+
+<br><br>
+<img src="https://github.com/phloxCompany/flutter_phlox_animations/blob/master/readme_files/controller_methods_01.gif?raw=true"
+width="400" alt="Flutter animations using phlox_animations package" loading="lazy"/>
+
+
+### code:
+```dart
+class ExampleControllerMethods extends StatefulWidget {
+  const ExampleControllerMethods({Key? key}) : super(key: key);
+
+  @override
+  State<ExampleControllerMethods> createState() =>
+      _ExampleControllerMethodsState();
+}
+
+class _ExampleControllerMethodsState extends State<ExampleControllerMethods> {
+  PhloxAnimationsController controller = PhloxAnimationsController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          PhloxAnimations(
+            auto: false,
+            controller: controller,
+            duration: const Duration(seconds: 1),
+            child: Container(
+              color: Colors.orange,
+              height: 100,
+              width: 100,
+            ),
+            toX: 2,
+          ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              IconButton(
+                  onPressed: () {
+
+                    // add animateTo
+                    controller..animateTo(
+                        toX: -200
+                    )..forward();
+
+                  }, icon: const Icon(Icons.arrow_back)),
+              IconButton(
+                  onPressed: () {
+
+                    // add animateTo
+                    controller..animateTo(
+                        toX: 200
+                    )..forward();
+
+                  }, icon: const Icon(Icons.arrow_forward)),
+            ],
+          )
+        ],
+      ),
+    );
+  }
+}
+```
+
+or you can add new animation for your widget using
+```
+    controller..newAnimate(
+      fromX: 100,
+        toX: -200
+    )..forward();
+```
+
+for example:
+<br><br>
+<img src="https://github.com/phloxCompany/flutter_phlox_animations/blob/master/readme_files/controller_methods_02.gif?raw=true"
+width="400" alt="Flutter animations using phlox_animations package" loading="lazy"/>
+
+### code:
+```dart
+class ExampleControllerMethods extends StatefulWidget {
+  const ExampleControllerMethods({Key? key}) : super(key: key);
+
+  @override
+  State<ExampleControllerMethods> createState() =>
+      _ExampleControllerMethodsState();
+}
+
+class _ExampleControllerMethodsState extends State<ExampleControllerMethods> {
+  PhloxAnimationsController controller = PhloxAnimationsController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          PhloxAnimations(
+            auto: false,
+            controller: controller,
+            duration: const Duration(seconds: 1),
+            child: Container(
+              color: Colors.orange,
+              height: 100,
+              width: 100,
+            ),
+            toX: 2,
+          ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              IconButton(
+                  onPressed: () {
+
+                    controller..newAnimate(
+                      fromX: 100,
+                        toX: -200
+                    )..forward();
+
+                  }, icon: const Icon(Icons.arrow_back)),
+              IconButton(
+                  onPressed: () {
+
+                    controller..newAnimate(
+                        fromX: -100,
+                        toX: 200
+                    )..forward();
+
+                  }, icon: const Icon(Icons.arrow_forward)),
+            ],
+          )
+        ],
+      ),
+    );
+  }
+}
+```
+
+
+
 
 

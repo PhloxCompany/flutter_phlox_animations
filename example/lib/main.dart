@@ -9,7 +9,7 @@ void main() {
     theme: ThemeData(
       primarySwatch: Colors.deepOrange,
     ),
-    home: const Example3(),
+    home: const ExampleControllerMethods(),
   ));
 }
 
@@ -127,21 +127,25 @@ class _Example3State extends State<Example3> {
                   child: MaterialButton(
                     /// add forward and reverse click
                     /// instead of floating action button
-                    onPressed: (){
-                      if (controller.animationStatus == AnimationStatus.dismissed ||
-                          controller.animationStatus == AnimationStatus.reverse) {
+                    onPressed: () {
+                      if (controller.animationStatus ==
+                              AnimationStatus.dismissed ||
+                          controller.animationStatus ==
+                              AnimationStatus.reverse) {
                         controller.forward();
-                      } else if (controller.animationStatus == AnimationStatus.completed ||
-                          controller.animationStatus == AnimationStatus.forward) {
+                      } else if (controller.animationStatus ==
+                              AnimationStatus.completed ||
+                          controller.animationStatus ==
+                              AnimationStatus.forward) {
                         controller.reverse();
                       }
                     },
                     // add color
                     color: animations.color,
                     shape: RoundedRectangleBorder(
-                      // add radius
-                      borderRadius: BorderRadius.circular(animations.radius!)
-                    ),
+                        // add radius
+                        borderRadius:
+                            BorderRadius.circular(animations.radius!)),
                     child: const Text("Animate me"),
                   ),
                 ),
@@ -153,9 +157,69 @@ class _Example3State extends State<Example3> {
           toY: 100,
           fromY: -100,
           toScale: 3,
-          fromRadius: 8, // add fromRadius
+          fromRadius: 8,
+          // add fromRadius
           toRadius: 24, // add to radius
         ),
+      ),
+    );
+  }
+}
+
+class ExampleControllerMethods extends StatefulWidget {
+  const ExampleControllerMethods({Key? key}) : super(key: key);
+
+  @override
+  State<ExampleControllerMethods> createState() =>
+      _ExampleControllerMethodsState();
+}
+
+class _ExampleControllerMethodsState extends State<ExampleControllerMethods> {
+  PhloxAnimationsController controller = PhloxAnimationsController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          PhloxAnimations(
+            auto: false,
+            controller: controller,
+            duration: const Duration(seconds: 1),
+            child: Container(
+              color: Colors.orange,
+              height: 100,
+              width: 100,
+            ),
+            toX: 2,
+          ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              IconButton(
+                  onPressed: () {
+
+                    controller..newAnimate(
+                      fromX: 100,
+                        toX: -200
+                    )..forward();
+
+                  }, icon: const Icon(Icons.arrow_back)),
+              IconButton(
+                  onPressed: () {
+
+                    controller..newAnimate(
+                        fromX: -100,
+                        toX: 200
+                    )..forward();
+
+                  }, icon: const Icon(Icons.arrow_forward)),
+            ],
+          )
+        ],
       ),
     );
   }
