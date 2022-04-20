@@ -651,6 +651,7 @@ width="60%" alt="Flutter animations using phlox_animations package" loading="laz
 width="100%" alt="Flutter animations using phlox_animations package" loading="lazy"/>
 
 ```dart
+toX: 400,
 moveXCurve: Curves.easeInQuart
 ```
 
