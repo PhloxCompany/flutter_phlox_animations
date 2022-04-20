@@ -179,22 +179,23 @@ class PhloxAnimationsController {
                 curve: moveXCurve,
               ));
     // init [scale]
-    scale = Tween<double>(begin: fromScale ?? scale?.value ?? 1, end: toScale ?? 1)
-        .animate(scaleCurve == null
-            ? _animationController!
-            : CurvedAnimation(
-                parent: _animationController!,
-                curve: scaleCurve,
-              ));
-    // init [rotate]
-    rotate =
-        Tween<double>(begin: fromDegrees ?? rotate?.value ?? 0, end: toDegrees ?? 0)
-            .animate(rotateCurve == null
+    scale =
+        Tween<double>(begin: fromScale ?? scale?.value ?? 1, end: toScale ?? 1)
+            .animate(scaleCurve == null
                 ? _animationController!
                 : CurvedAnimation(
                     parent: _animationController!,
-                    curve: rotateCurve,
+                    curve: scaleCurve,
                   ));
+    // init [rotate]
+    rotate = Tween<double>(
+            begin: fromDegrees ?? rotate?.value ?? 0, end: toDegrees ?? 0)
+        .animate(rotateCurve == null
+            ? _animationController!
+            : CurvedAnimation(
+                parent: _animationController!,
+                curve: rotateCurve,
+              ));
     // init [color]
     color = ColorTween(
             begin: fromColor ?? color?.value ?? Colors.transparent,
@@ -206,14 +207,14 @@ class PhloxAnimationsController {
                 curve: colorChangeCurve,
               ));
     // init [opacity]
-    opacity =
-        Tween<double>(begin: fromOpacity ?? opacity?.value ?? 1, end: toOpacity ?? 1)
-            .animate(opacityCurve == null
-                ? _animationController!
-                : CurvedAnimation(
-                    parent: _animationController!,
-                    curve: opacityCurve,
-                  ));
+    opacity = Tween<double>(
+            begin: fromOpacity ?? opacity?.value ?? 1, end: toOpacity ?? 1)
+        .animate(opacityCurve == null
+            ? _animationController!
+            : CurvedAnimation(
+                parent: _animationController!,
+                curve: opacityCurve,
+              ));
     // init [radius]
     radius = Tween<double>(
             begin: fromRoundedRadius ?? radius?.value ?? 0,

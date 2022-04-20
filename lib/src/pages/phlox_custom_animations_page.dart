@@ -217,7 +217,7 @@ class _PhloxCustomAnimationsState extends State<PhloxCustomAnimations>
   }
 
   @override
-  dispose(){
+  dispose() {
     _phloxAnimationsController!.dispose();
     _phloxAnimationsController = null;
     super.dispose();

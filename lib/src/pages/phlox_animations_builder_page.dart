@@ -327,7 +327,7 @@ class _PhloxAnimationsBuilderState extends State<PhloxAnimationsBuilder>
   }
 
   @override
-  dispose(){
+  dispose() {
     _phloxAnimationsController!.dispose();
     _phloxAnimationsController = null;
     super.dispose();
@@ -341,11 +341,13 @@ class _PhloxAnimationsBuilderState extends State<PhloxAnimationsBuilder>
         return Opacity(
           opacity: _phloxAnimationsController!.opacity!.value,
           child: Transform.rotate(
-            angle: _phloxAnimationsController!.degreeToRadian(_phloxAnimationsController!.rotate?.value ?? 0),
-            origin: widget.rotateOffset ?? Offset(
-              _phloxAnimationsController!.moveX!.value,
-              _phloxAnimationsController!.moveY!.value,
-            ),
+            angle: _phloxAnimationsController!
+                .degreeToRadian(_phloxAnimationsController!.rotate?.value ?? 0),
+            origin: widget.rotateOffset ??
+                Offset(
+                  _phloxAnimationsController!.moveX!.value,
+                  _phloxAnimationsController!.moveY!.value,
+                ),
             child: Transform.scale(
               scale: _phloxAnimationsController!.scale!.value,
               child: Transform.translate(
