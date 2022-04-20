@@ -407,7 +407,7 @@ class _PhloxAnimationsState extends State<PhloxAnimations>
         return Opacity(
           opacity: _phloxAnimationsController!.opacity!.value,
           child: Transform.rotate(
-            angle: _phloxAnimationsController!.degreeToRadian(_phloxAnimationsController!.rotate!.value!),
+            angle: _phloxAnimationsController!.degreeToRadian(_phloxAnimationsController!.rotate!.value),
             origin: widget.rotateOffset ?? Offset(
               _phloxAnimationsController!.moveX!.value,
               _phloxAnimationsController!.moveY!.value,

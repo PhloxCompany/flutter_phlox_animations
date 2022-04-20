@@ -110,41 +110,39 @@ class _Example3State extends State<Example3> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          if (controller.animationStatus == AnimationStatus.dismissed ||
-              controller.animationStatus == AnimationStatus.reverse) {
-            controller.forward();
-          } else if (controller.animationStatus == AnimationStatus.completed ||
-              controller.animationStatus == AnimationStatus.forward) {
-            controller.reverse();
-          }
-        },
-      ),
       body: Center(
         child: PhloxAnimations.custom(
           auto: false,
           controller: controller,
           duration: const Duration(seconds: 2),
-          fromColor: Colors.blue.shade900,
-          toColor: Colors.green,
+          fromColor: Colors.redAccent,
+          toColor: Colors.lightBlueAccent,
           builder: (animations) {
-            // move x, y
             return Transform.translate(
               offset: Offset(animations.moveX!, animations.moveY!),
-              // rotate ( degree )
               child: Transform.rotate(
                 angle: controller.degreeToRadian(animations.rotate!),
-                // scale
                 child: Transform.scale(
                   scale: animations.scale,
-                  child: Container(
-                    height: 250,
-                    width: 250,
-                    decoration: BoxDecoration(
-                      color: animations.color,
-                      borderRadius: BorderRadius.circular(32),
+                  child: MaterialButton(
+                    /// add forward and reverse click
+                    /// instead of floating action button
+                    onPressed: (){
+                      if (controller.animationStatus == AnimationStatus.dismissed ||
+                          controller.animationStatus == AnimationStatus.reverse) {
+                        controller.forward();
+                      } else if (controller.animationStatus == AnimationStatus.completed ||
+                          controller.animationStatus == AnimationStatus.forward) {
+                        controller.reverse();
+                      }
+                    },
+                    // add color
+                    color: animations.color,
+                    shape: RoundedRectangleBorder(
+                      // add radius
+                      borderRadius: BorderRadius.circular(animations.radius!)
                     ),
+                    child: const Text("Animate me"),
                   ),
                 ),
               ),
@@ -154,11 +152,11 @@ class _Example3State extends State<Example3> {
           toX: 100,
           toY: 100,
           fromY: -100,
-          toDegrees: 180,
-          toScale: 2
+          toScale: 3,
+          fromRadius: 8, // add fromRadius
+          toRadius: 24, // add to radius
         ),
       ),
     );
   }
-
 }

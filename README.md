@@ -90,8 +90,8 @@ class Example2 extends StatelessWidget {
                 borderRadius: BorderRadius.circular(32)
             ),
           ),
-          fromX: -200, /// change
-          toX: 200, /// change
+          fromX: -200, // add
+          toX: 200, // add
         ),
       ),
     );
@@ -129,9 +129,9 @@ class Example3 extends StatelessWidget {
           ),
           fromX: -200,
           toX: 200,
-          fromY: -200, /// change
-          toY: 200, /// change
-          loop: true, /// change **Loop**
+          fromY: -200, /// add
+          toY: 200, /// add
+          loop: true, /// add **Loop**
         ),
       ),
     );
@@ -167,13 +167,13 @@ class Example2 extends StatefulWidget {
 class _Example2State extends State<Example2> {
   PhloxAnimationsController controller = PhloxAnimationsController();
 
-  bool start = false;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
+          
+          // add forward and reverse
           if (controller.animationStatus == AnimationStatus.dismissed ||
               controller.animationStatus == AnimationStatus.reverse) {
             controller.forward();
@@ -181,13 +181,13 @@ class _Example2State extends State<Example2> {
               controller.animationStatus == AnimationStatus.forward) {
             controller.reverse();
           }
-          start = !start;
+          
         },
       ),
       body: Center(
         child: PhloxAnimations(
-          auto: false,
-          controller: controller,
+          auto: false, // add
+          controller: controller, // add
           duration: const Duration(seconds: 2),
           child: Container(
             height: 250,
@@ -200,7 +200,7 @@ class _Example2State extends State<Example2> {
           toX: 100,
           toY: 200,
           fromY: -200,
-          toDegrees: 90,
+          toDegrees: 90, // add
         ),
       ),
     );
@@ -234,6 +234,7 @@ class _Example2State extends State<Example2> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
+
           if (controller.animationStatus == AnimationStatus.dismissed ||
               controller.animationStatus == AnimationStatus.reverse) {
             controller.forward();
@@ -241,19 +242,20 @@ class _Example2State extends State<Example2> {
               controller.animationStatus == AnimationStatus.forward) {
             controller.reverse();
           }
+          
         },
       ),
       body: Center(
-        /// .builder(
+        /// add .builder(
         child: PhloxAnimations.builder( 
           auto: false,
           controller: controller,
           duration: const Duration(seconds: 2),
-          // from color -> blue
+          // add from color -> blue
           fromColor: Colors.blue.shade900,
-          // to color -> green
+          // add to color -> green
           toColor: Colors.green,
-          // builder instead of child
+          // add builder instead of child
           builder: (animations) {  
             return Container(
               height: 250,
@@ -351,6 +353,79 @@ class _Example3State extends State<Example3> {
     );
   }
 
+}
+```
+| WARNING: if you wanna add click effect or buttons, add inside #custom animations! |
+| --- |
+
+for example :
+<br><br>
+<img src="https://github.com/phloxCompany/flutter_phlox_animations/blob/master/readme_files/custom_button.gif?raw=true"
+width="400" alt="Flutter animations using phlox_animations package" loading="lazy"/>
+
+```dart
+class Example3 extends StatefulWidget {
+  const Example3({Key? key}) : super(key: key);
+
+  @override
+  State<Example3> createState() => _Example3State();
+}
+
+class _Example3State extends State<Example3> {
+  PhloxAnimationsController controller = PhloxAnimationsController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: PhloxAnimations.custom(
+          auto: false,
+          controller: controller,
+          duration: const Duration(seconds: 2),
+          fromColor: Colors.redAccent,
+          toColor: Colors.lightBlueAccent,
+          builder: (animations) {
+            return Transform.translate(
+              offset: Offset(animations.moveX!, animations.moveY!),
+              child: Transform.rotate(
+                angle: controller.degreeToRadian(animations.rotate!),
+                child: Transform.scale(
+                  scale: animations.scale,
+                  child: MaterialButton(
+                    /// add forward and reverse to button onPressed
+                    /// instead of floating action button
+                    onPressed: (){
+                      if (controller.animationStatus == AnimationStatus.dismissed ||
+                          controller.animationStatus == AnimationStatus.reverse) {
+                        controller.forward();
+                      } else if (controller.animationStatus == AnimationStatus.completed ||
+                          controller.animationStatus == AnimationStatus.forward) {
+                        controller.reverse();
+                      }
+                    },
+                    // add color
+                    color: animations.color,
+                    shape: RoundedRectangleBorder(
+                      // add radius
+                        borderRadius: BorderRadius.circular(animations.radius!)
+                    ),
+                    child: const Text("Animate me"),
+                  ),
+                ),
+              ),
+            );
+          },
+          fromX: -100,
+          toX: 100,
+          toY: 100,
+          fromY: -100,
+          toScale: 3,
+          fromRadius: 8, // add fromRadius
+          toRadius: 24, // add to radius
+        ),
+      ),
+    );
+  }
 }
 ```
 
