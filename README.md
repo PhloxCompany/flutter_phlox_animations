@@ -601,7 +601,7 @@ class _ExampleControllerMethodsState extends State<ExampleControllerMethods> {
 
 # but what is curve ?
 
-if you check<b href="https://api.flutter.dev/flutter/animation/Curves-class.html" target="blank"> flutter curves class </b> 
+if you check<a href="https://api.flutter.dev/flutter/animation/Curves-class.html" target="blank"> flutter curves class </a> 
 
 for example:
 <br><br>
