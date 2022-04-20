@@ -244,4 +244,9 @@ class PhloxAnimationsController {
   /// [duration] set new reverse duration
   set reverseDuration(Duration duration) =>
       _animationController!.reverseDuration = duration;
+
+  /// change radian to degree with [degreeToRadian]
+  double degreeToRadian(double degree) {
+    return degree * 3.141592653589793238 / 180;
+  }
 }

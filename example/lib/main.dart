@@ -9,7 +9,7 @@ void main() {
     theme: ThemeData(
       primarySwatch: Colors.deepOrange,
     ),
-    home: const Example2(),
+    home: const Example3(),
   ));
 }
 
@@ -54,16 +54,11 @@ class _Example2State extends State<Example2> {
   PhloxAnimationsController controller = PhloxAnimationsController();
 
   @override
-  initState() {
-    super.initState();
-    print(controller.animationStatus);
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
+          print(controller.animationStatus);
           if (controller.animationStatus == AnimationStatus.dismissed ||
               controller.animationStatus == AnimationStatus.reverse) {
             controller.forward();
@@ -74,18 +69,23 @@ class _Example2State extends State<Example2> {
         },
       ),
       body: Center(
-        child: PhloxAnimations(
+        child: PhloxAnimations.builder(
           auto: false,
           controller: controller,
           toDegrees: 90,
           duration: const Duration(seconds: 2),
-          child: Container(
-            height: 250,
-            width: 250,
-            decoration: BoxDecoration(
-                color: Colors.blue.shade900,
-                borderRadius: BorderRadius.circular(32)),
-          ),
+          fromColor: Colors.blue.shade900,
+          toColor: Colors.green,
+          builder: (animations) {
+            return Container(
+              height: 250,
+              width: 250,
+              decoration: BoxDecoration(
+                color: animations.color,
+                borderRadius: BorderRadius.circular(32),
+              ),
+            );
+          },
           fromX: -100,
           toX: 100,
           toY: 200,
@@ -107,29 +107,58 @@ class Example3 extends StatefulWidget {
 class _Example3State extends State<Example3> {
   PhloxAnimationsController controller = PhloxAnimationsController();
 
-  bool start = true;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          PhloxAnimations.custom(
-            controller: controller, // new
-            duration: const Duration(seconds: 2),
-            builder: (animations) => Transform.translate(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          if (controller.animationStatus == AnimationStatus.dismissed ||
+              controller.animationStatus == AnimationStatus.reverse) {
+            controller.forward();
+          } else if (controller.animationStatus == AnimationStatus.completed ||
+              controller.animationStatus == AnimationStatus.forward) {
+            controller.reverse();
+          }
+        },
+      ),
+      body: Center(
+        child: PhloxAnimations.custom(
+          auto: false,
+          controller: controller,
+          duration: const Duration(seconds: 2),
+          fromColor: Colors.blue.shade900,
+          toColor: Colors.green,
+          builder: (animations) {
+            // move x, y
+            return Transform.translate(
               offset: Offset(animations.moveX!, animations.moveY!),
-              child: MaterialButton(
-                onPressed: () {
-                  print("Pressed");
-                },
-                child: Text("Click me"),
+              // rotate ( degree )
+              child: Transform.rotate(
+                angle: controller.degreeToRadian(animations.rotate!),
+                // scale
+                child: Transform.scale(
+                  scale: animations.scale,
+                  child: Container(
+                    height: 250,
+                    width: 250,
+                    decoration: BoxDecoration(
+                      color: animations.color,
+                      borderRadius: BorderRadius.circular(32),
+                    ),
+                  ),
+                ),
               ),
-            ),
-            toY: 100,
-          ),
-        ],
+            );
+          },
+          fromX: -100,
+          toX: 100,
+          toY: 100,
+          fromY: -100,
+          toDegrees: 180,
+          toScale: 2
+        ),
       ),
     );
   }
+
 }

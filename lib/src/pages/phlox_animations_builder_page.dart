@@ -298,6 +298,7 @@ class _PhloxAnimationsBuilderState extends State<PhloxAnimationsBuilder>
                 .toStringAsFixed(2))));
       })
       ..addStatusListener((status) {
+        _phloxAnimationsController!._animationStatus = status;
         _phloxAnimationsController!.statusListener?.call(status);
         if (_phloxAnimationsController!.loop) {
           if (status == AnimationStatus.completed) {
@@ -333,7 +334,7 @@ class _PhloxAnimationsBuilderState extends State<PhloxAnimationsBuilder>
         return Opacity(
           opacity: _phloxAnimationsController!.opacity!.value,
           child: Transform.rotate(
-            angle: degreeToRadian(_phloxAnimationsController!.rotate!.value),
+            angle: _phloxAnimationsController!.degreeToRadian(_phloxAnimationsController!.rotate!.value ?? 0),
             origin: widget.rotateOffset ?? Offset(
               _phloxAnimationsController!.moveX!.value,
               _phloxAnimationsController!.moveY!.value,
@@ -378,8 +379,5 @@ class _PhloxAnimationsBuilderState extends State<PhloxAnimationsBuilder>
         ),
       )),
     );
-  }
-  double degreeToRadian(double degree) {
-    return degree * 3.141592653589793238 / 180;
   }
 }

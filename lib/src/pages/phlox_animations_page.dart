@@ -407,7 +407,7 @@ class _PhloxAnimationsState extends State<PhloxAnimations>
         return Opacity(
           opacity: _phloxAnimationsController!.opacity!.value,
           child: Transform.rotate(
-            angle: degreeToRadian(_phloxAnimationsController!.rotate!.value),
+            angle: _phloxAnimationsController!.degreeToRadian(_phloxAnimationsController!.rotate!.value!),
             origin: widget.rotateOffset ?? Offset(
               _phloxAnimationsController!.moveX!.value,
               _phloxAnimationsController!.moveY!.value,
@@ -426,8 +426,5 @@ class _PhloxAnimationsState extends State<PhloxAnimations>
       },
       child: widget.child,
     );
-  }
-  double degreeToRadian(double degree) {
-    return degree * 3.141592653589793238 / 180;
   }
 }
