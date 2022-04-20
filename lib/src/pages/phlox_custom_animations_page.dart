@@ -217,6 +217,13 @@ class _PhloxCustomAnimationsState extends State<PhloxCustomAnimations>
   }
 
   @override
+  dispose(){
+    _phloxAnimationsController!.dispose();
+    _phloxAnimationsController = null;
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
       animation: _phloxAnimationsController!.progress!,

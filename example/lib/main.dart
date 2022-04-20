@@ -231,16 +231,17 @@ class ExampleCurves extends StatelessWidget {
         padding: const EdgeInsets.all(32),
         child: Row(
           children: [
-            PhloxAnimations(
-              toX: 1000,
-              moveXCurve: Curves.easeInQuart, // curve
-              duration: const Duration(seconds: 3),
-              child: Image.network(
-                "https://www.kindpng.com/picc/m/53-534215_sports-car-png-red-sports-car-png-transparent.png",
-                width: 100,
-                height: 100,
-              ),
-            )
+            if (MediaQuery.of(context).size.width > 1000)
+              PhloxAnimations(
+                toX: 1000,
+                moveXCurve: Curves.easeInQuart, // curve
+                duration: const Duration(seconds: 3),
+                child: Image.network(
+                  "https://www.kindpng.com/picc/m/53-534215_sports-car-png-red-sports-car-png-transparent.png",
+                  width: 100,
+                  height: 100,
+                ),
+              )
           ],
         ),
       ),
