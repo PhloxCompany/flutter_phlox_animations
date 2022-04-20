@@ -1,6 +1,7 @@
 # 📱 Phlox Animations plugin
 
-[![flutter animation pub get package version](https://img.shields.io/badge/pub-1.0.1-red)](https://pub.dev/packages/phlox_animations)
+[![flutter animation pub get package version](https://img.shields.io/badge/pub-any-green)](https://pub.dev/packages/phlox_animations)
+[![phlox company youtube](https://img.shields.io/badge/youtube-any-red)](https://youtube.com/c/phloxcompany)
 [![flutter animation phlox company](https://img.shields.io/badge/Flutter-PhloxCompany-blue)](https://pub.dev/packages/phlox_animations)
 
 **Phlox Animations** is a simple package to create beautiful custom animations .
@@ -658,7 +659,3 @@ moveXCurve: Curves.easeInQuart
 * [Website](https://phloxcompany.com)
 * [Youtube channel](https://www.youtube.com/c/phloxcompany)
 * [Instagram](https://instagram.com/flutter.phlox)
-
-
-
-## Licence
