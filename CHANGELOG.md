@@ -18,3 +18,7 @@ functions
 ## 2.0.0
 
 * add PhloxAnimationsController for control animations and remove dependent packages
+
+## 2.1.0
+
+* fix issues and add phlox custom and builder animations
