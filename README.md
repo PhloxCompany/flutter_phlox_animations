@@ -35,7 +35,7 @@ Animates the scale of a Widget within a stateless widget.
 example :
 <br><br>
 <img src="https://github.com/phloxCompany/flutter_phlox_animations/blob/master/readme_files/scale.gif?raw=true"
-    width="100%" alt="Flutter animations using phlox_animations package" loading="lazy"/>
+    width="40%" alt="Flutter animations using phlox_animations package" loading="lazy"/>
 
 ```dart
 class Example1 extends StatelessWidget {
@@ -70,7 +70,7 @@ Animates the move x of a Widget within a stateless widget.
 example :
 <br><br>
 <img src="https://github.com/phloxCompany/flutter_phlox_animations/blob/master/readme_files/moveX_01.gif?raw=true"
-    width="100%" alt="Flutter animations using phlox_animations package" loading="lazy"/>
+    width="50%" alt="Flutter animations using phlox_animations package" loading="lazy"/>
 
 ### code:
 ```dart
@@ -107,7 +107,7 @@ Animates the move x of a Widget within a stateless widget.
 example :
 <br><br>
 <img src="https://github.com/phloxCompany/flutter_phlox_animations/blob/master/readme_files/moveXYLoop.gif?raw=true"
-width="100%" alt="Flutter animations using phlox_animations package" loading="lazy"/>
+width="40%" alt="Flutter animations using phlox_animations package" loading="lazy"/>
 
 ### code:
 ```dart
@@ -155,7 +155,7 @@ Animates the move x,y and rotate of a Widget within a state full widget using co
 example :
 <br><br>
 <img src="https://github.com/phloxCompany/flutter_phlox_animations/blob/master/readme_files/controller01.gif?raw=true"
-width="100%" alt="Flutter animations using phlox_animations package" loading="lazy"/>
+width="50%" alt="Flutter animations using phlox_animations package" loading="lazy"/>
 
 ### code:
 ```dart
@@ -218,7 +218,7 @@ Animates the move x and y, rotate of a Widget within a state full widget using c
 example :
 <br><br>
 <img src="https://github.com/phloxCompany/flutter_phlox_animations/blob/master/readme_files/builder_color.gif?raw=true"
-width="100%" alt="Flutter animations using phlox_animations package" loading="lazy"/>
+width="50%" alt="Flutter animations using phlox_animations package" loading="lazy"/>
 
 ### code:
 ```dart
@@ -288,7 +288,7 @@ Animates the move x and y, rotate, scale of a Widget within a state full widget 
 example :
 <br><br>
 <img src="https://github.com/phloxCompany/flutter_phlox_animations/blob/master/readme_files/custom_scale_rotate_color.gif?raw=true"
-width="100%" alt="Flutter animations using phlox_animations package" loading="lazy"/>
+width="50%" alt="Flutter animations using phlox_animations package" loading="lazy"/>
 
 ### code:
 ```dart
@@ -598,7 +598,67 @@ class _ExampleControllerMethodsState extends State<ExampleControllerMethods> {
 }
 ```
 
+# but what is curve ?
+
+if you check<b href="https://api.flutter.dev/flutter/animation/Curves-class.html" target="blank"> flutter curves class </b> 
+
+for example:
+<br><br>
+<img src="https://github.com/phloxCompany/flutter_phlox_animations/blob/master/readme_files/ball_curve.gif?raw=true"
+width="60%" alt="Flutter animations using phlox_animations package" loading="lazy"/>
+<br>
+<img src="https://github.com/phloxCompany/flutter_phlox_animations/blob/master/readme_files/ball.gif?raw=true"
+width="100%" alt="Flutter animations using phlox_animations package" loading="lazy"/>
+
+#### code :
+```dart
+class ExampleCurves extends StatelessWidget {
+  const ExampleCurves({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.all(32),
+        child: Row(
+          children: [
+            PhloxAnimations(
+              toX: 400,
+              moveXCurve: Curves.bounceOut, // curve
+              toDegrees: 700,
+              duration: const Duration(seconds: 3),
+              child: Image.network(
+                "https://pngimg.com/uploads/football/football_PNG28467.png",
+                width: 100,
+                height: 100,
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+```
+### or
+
+<br><br>
+<img src="https://github.com/phloxCompany/flutter_phlox_animations/blob/master/readme_files/car_curve.gif?raw=true"
+width="60%" alt="Flutter animations using phlox_animations package" loading="lazy"/>
+<br>
+<img src="https://github.com/phloxCompany/flutter_phlox_animations/blob/master/readme_files/car.gif?raw=true"
+width="100%" alt="Flutter animations using phlox_animations package" loading="lazy"/>
+
+```dart
+moveXCurve: Curves.easeInQuart
+```
+
+## Links
+
+* [Website](https://phloxcompany.com)
+* [Youtube channel](https://www.youtube.com/c/phloxcompany)
+* [Instagram](https://instagram.com/flutter.phlox)
 
 
 
-
+## Licence

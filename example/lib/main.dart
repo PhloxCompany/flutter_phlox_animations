@@ -9,7 +9,7 @@ void main() {
     theme: ThemeData(
       primarySwatch: Colors.deepOrange,
     ),
-    home: const ExampleControllerMethods(),
+    home: const ExampleCurves(),
   ));
 }
 
@@ -201,25 +201,48 @@ class _ExampleControllerMethodsState extends State<ExampleControllerMethods> {
             children: [
               IconButton(
                   onPressed: () {
-
-                    controller..newAnimate(
-                      fromX: 100,
-                        toX: -200
-                    )..forward();
-
-                  }, icon: const Icon(Icons.arrow_back)),
+                    controller
+                      ..newAnimate(fromX: 100, toX: -200)
+                      ..forward();
+                  },
+                  icon: const Icon(Icons.arrow_back)),
               IconButton(
                   onPressed: () {
-
-                    controller..newAnimate(
-                        fromX: -100,
-                        toX: 200
-                    )..forward();
-
-                  }, icon: const Icon(Icons.arrow_forward)),
+                    controller
+                      ..newAnimate(fromX: -100, toX: 200)
+                      ..forward();
+                  },
+                  icon: const Icon(Icons.arrow_forward)),
             ],
           )
         ],
+      ),
+    );
+  }
+}
+
+class ExampleCurves extends StatelessWidget {
+  const ExampleCurves({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.all(32),
+        child: Row(
+          children: [
+            PhloxAnimations(
+              toX: 1000,
+              moveXCurve: Curves.easeInQuart, // curve
+              duration: const Duration(seconds: 3),
+              child: Image.network(
+                "https://www.kindpng.com/picc/m/53-534215_sports-car-png-red-sports-car-png-transparent.png",
+                width: 100,
+                height: 100,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
