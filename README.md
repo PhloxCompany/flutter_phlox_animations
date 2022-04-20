@@ -35,7 +35,7 @@ Animates the scale of a Widget within a stateless widget.
 example :
 <br><br>
 <img src="https://github.com/phloxCompany/flutter_phlox_animations/blob/master/readme_files/scale.gif?raw=true"
-    width="400" alt="Flutter animations using phlox_animations package" loading="lazy"/>
+    width="100%" alt="Flutter animations using phlox_animations package" loading="lazy"/>
 
 ```dart
 class Example1 extends StatelessWidget {
@@ -70,7 +70,7 @@ Animates the move x of a Widget within a stateless widget.
 example :
 <br><br>
 <img src="https://github.com/phloxCompany/flutter_phlox_animations/blob/master/readme_files/moveX_01.gif?raw=true"
-    width="400" alt="Flutter animations using phlox_animations package" loading="lazy"/>
+    width="100%" alt="Flutter animations using phlox_animations package" loading="lazy"/>
 
 ### code:
 ```dart
@@ -107,7 +107,7 @@ Animates the move x of a Widget within a stateless widget.
 example :
 <br><br>
 <img src="https://github.com/phloxCompany/flutter_phlox_animations/blob/master/readme_files/moveXYLoop.gif?raw=true"
-width="400" alt="Flutter animations using phlox_animations package" loading="lazy"/>
+width="100%" alt="Flutter animations using phlox_animations package" loading="lazy"/>
 
 ### code:
 ```dart
@@ -155,7 +155,7 @@ Animates the move x,y and rotate of a Widget within a state full widget using co
 example :
 <br><br>
 <img src="https://github.com/phloxCompany/flutter_phlox_animations/blob/master/readme_files/controller01.gif?raw=true"
-width="400" alt="Flutter animations using phlox_animations package" loading="lazy"/>
+width="100%" alt="Flutter animations using phlox_animations package" loading="lazy"/>
 
 ### code:
 ```dart
@@ -218,7 +218,7 @@ Animates the move x and y, rotate of a Widget within a state full widget using c
 example :
 <br><br>
 <img src="https://github.com/phloxCompany/flutter_phlox_animations/blob/master/readme_files/builder_color.gif?raw=true"
-width="400" alt="Flutter animations using phlox_animations package" loading="lazy"/>
+width="100%" alt="Flutter animations using phlox_animations package" loading="lazy"/>
 
 ### code:
 ```dart
@@ -288,7 +288,7 @@ Animates the move x and y, rotate, scale of a Widget within a state full widget 
 example :
 <br><br>
 <img src="https://github.com/phloxCompany/flutter_phlox_animations/blob/master/readme_files/custom_scale_rotate_color.gif?raw=true"
-width="400" alt="Flutter animations using phlox_animations package" loading="lazy"/>
+width="100%" alt="Flutter animations using phlox_animations package" loading="lazy"/>
 
 ### code:
 ```dart
@@ -370,7 +370,7 @@ class _Example3State extends State<Example3> {
 for example :
 <br><br>
 <img src="https://github.com/phloxCompany/flutter_phlox_animations/blob/master/readme_files/custom_button.gif?raw=true"
-width="400" alt="Flutter animations using phlox_animations package" loading="lazy"/>
+width="100%" alt="Flutter animations using phlox_animations package" loading="lazy"/>
 
 ### code:
 ```dart
@@ -458,7 +458,7 @@ for example:
 
 <br><br>
 <img src="https://github.com/phloxCompany/flutter_phlox_animations/blob/master/readme_files/controller_methods_01.gif?raw=true"
-width="400" alt="Flutter animations using phlox_animations package" loading="lazy"/>
+width="100%" alt="Flutter animations using phlox_animations package" loading="lazy"/>
 
 
 ### code:
@@ -534,7 +534,7 @@ or you can add new animation for your widget using
 for example:
 <br><br>
 <img src="https://github.com/phloxCompany/flutter_phlox_animations/blob/master/readme_files/controller_methods_02.gif?raw=true"
-width="400" alt="Flutter animations using phlox_animations package" loading="lazy"/>
+width="100%" alt="Flutter animations using phlox_animations package" loading="lazy"/>
 
 ### code:
 ```dart
