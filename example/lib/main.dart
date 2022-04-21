@@ -28,8 +28,9 @@ class Example1 extends StatelessWidget {
             height: 250,
             width: 250,
             decoration: BoxDecoration(
-                color: Colors.blue.shade900,
-                borderRadius: BorderRadius.circular(32)),
+              color: Colors.blue.shade900,
+              borderRadius: BorderRadius.circular(32),
+            ),
           ),
           fromX: -200,
           toX: 200,
@@ -58,7 +59,6 @@ class _Example2State extends State<Example2> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          print(controller.animationStatus);
           if (controller.animationStatus == AnimationStatus.dismissed ||
               controller.animationStatus == AnimationStatus.reverse) {
             controller.forward();

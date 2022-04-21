@@ -117,11 +117,11 @@ class _PhloxCustomAnimationsState extends State<PhloxCustomAnimations>
                   ));
     _phloxAnimationsController!.moveY =
         Tween<double>(begin: widget.fromY ?? 0, end: widget.toY ?? 0)
-            .animate(widget.moveXCurve == null
+            .animate(widget.moveYCurve == null
                 ? _phloxAnimationsController!._animationController!
                 : CurvedAnimation(
                     parent: _phloxAnimationsController!._animationController!,
-                    curve: widget.moveXCurve!,
+                    curve: widget.moveYCurve!,
                   ));
     _phloxAnimationsController!.color = ColorTween(
             begin: widget.fromColor ?? Colors.transparent,

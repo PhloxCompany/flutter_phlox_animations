@@ -64,6 +64,7 @@ class PhloxAnimationsController {
     double? toX,
     double? toY,
     double? toOpacity,
+    double? toRoundedRadius,
     Color? toColor,
     double? toScale,
     double? toDegrees,
@@ -121,6 +122,10 @@ class PhloxAnimationsController {
                     parent: _animationController!,
                     curve: opacityCurve,
                   ));
+    radius = Tween<double>(
+            begin: radius?.value ?? 2,
+            end: toRoundedRadius ?? radius?.value ?? 2)
+        .animate(_animationController!);
     progress =
         Tween<double>(begin: 0.0, end: 1.0).animate(_animationController!);
     _animationController!.value = 0;

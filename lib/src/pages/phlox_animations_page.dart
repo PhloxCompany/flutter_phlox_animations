@@ -329,11 +329,11 @@ class _PhloxAnimationsState extends State<PhloxAnimations>
                   ));
     _phloxAnimationsController!.moveY =
         Tween<double>(begin: widget.fromY ?? 0, end: widget.toY ?? 0)
-            .animate(widget.moveXCurve == null
+            .animate(widget.moveYCurve == null
                 ? _phloxAnimationsController!._animationController!
                 : CurvedAnimation(
                     parent: _phloxAnimationsController!._animationController!,
-                    curve: widget.moveXCurve!,
+                    curve: widget.moveYCurve!,
                   ));
 
     _phloxAnimationsController!.scale =
