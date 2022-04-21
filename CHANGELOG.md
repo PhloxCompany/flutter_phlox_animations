@@ -22,3 +22,7 @@ functions
 ## 2.1.0
 
 * fix issues and add phlox custom and builder animations
+
+## 2.1.1
+
+* fix moveY curve issue
